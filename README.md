@@ -1,4 +1,4 @@
-# fluides
+# Fluides
 
 A Flutter desktop proof of concept.
 
