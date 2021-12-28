@@ -8,3 +8,4 @@ const defaultPadding = 16.0;
 const dockPadding = 16.0;
 
 const borderRadiusDefault = BorderRadius.all(Radius.circular(25));
+const borderRadiusInput = BorderRadius.all(Radius.circular(15));
