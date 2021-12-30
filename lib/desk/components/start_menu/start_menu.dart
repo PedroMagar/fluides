@@ -2,6 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../constants.dart';
+import 'components/app_list.dart';
+import 'components/app_list_config.dart';
+import 'components/config_menu.dart';
+import 'components/search_field.dart';
+import 'components/shortcut_menu.dart';
 
 class StartMenu extends StatelessWidget {
   const StartMenu({
@@ -20,12 +25,19 @@ class StartMenu extends StatelessWidget {
       child: ClipRRect(
         borderRadius: borderRadiusDefault,
         child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize: MainAxisSize.max,
+          //crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Expanded(
               flex: 2,
               child: Container(
                 color: Colors.black12,
+                child: Column(
+                  children: [
+                    ShortcutMenu(),
+                    ConfigMenu(),
+                  ],
+                ),
               ),
             ),
             Expanded(
@@ -53,201 +65,28 @@ class StartMenu extends StatelessWidget {
                       ),
                     ],
                   ),
-                  Column(
-                    //crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      ListTile(
-                        onTap: () {},
-                        horizontalTitleGap: 0.0,
-                        leading: SvgPicture.asset(
-                          "assets/icons/menu_dashbord.svg",
-                          color: Colors.black,
+                  AppList(),
+                  Expanded(
+                    child: Column(
+                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        ListTile(
+                          onTap: () {},
+                          horizontalTitleGap: 0.0,
+                          leading: SvgPicture.asset(
+                            "assets/icons/menu_dashbord.svg",
+                            color: Colors.black,
+                          ),
+                          title: Text("Todos os Aplicativos"),
                         ),
-                        title: Text("Atualizar"),
-                      ),
-                      ListTile(
-                        onTap: () {},
-                        horizontalTitleGap: 0.0,
-                        leading: SvgPicture.asset(
-                          "assets/icons/menu_dashbord.svg",
-                          color: Colors.black,
-                        ),
-                        title: Text("Video"),
-                      ),
-                      ListTile(
-                        onTap: () {},
-                        horizontalTitleGap: 0.0,
-                        leading: SvgPicture.asset(
-                          "assets/icons/menu_dashbord.svg",
-                          color: Colors.black,
-                        ),
-                        title: Text("Terminal"),
-                      ),
-                      ListTile(
-                        onTap: () {},
-                        horizontalTitleGap: 0.0,
-                        leading: SvgPicture.asset(
-                          "assets/icons/menu_dashbord.svg",
-                          color: Colors.black,
-                        ),
-                        title: Text("Gerenciador de Dispositivos"),
-                      ),
-                      ListTile(
-                        onTap: () {},
-                        horizontalTitleGap: 0.0,
-                        leading: SvgPicture.asset(
-                          "assets/icons/menu_dashbord.svg",
-                          color: Colors.black,
-                        ),
-                        title: Text("Gerenciador de Arquivos"),
-                      ),
-                      ListTile(
-                        onTap: () {},
-                        horizontalTitleGap: 0.0,
-                        leading: SvgPicture.asset(
-                          "assets/icons/menu_dashbord.svg",
-                          color: Colors.black,
-                        ),
-                        title: Text("Gravador de Tela"),
-                      ),
-                      ListTile(
-                        onTap: () {},
-                        horizontalTitleGap: 0.0,
-                        leading: SvgPicture.asset(
-                          "assets/icons/menu_dashbord.svg",
-                          color: Colors.black,
-                        ),
-                        title: Text("Imagem"),
-                      ),
-                      ListTile(
-                        onTap: () {},
-                        horizontalTitleGap: 0.0,
-                        leading: SvgPicture.asset(
-                          "assets/icons/menu_dashbord.svg",
-                          color: Colors.black,
-                        ),
-                        title: Text("Álbum"),
-                      ),
-                      ListTile(
-                        onTap: () {},
-                        horizontalTitleGap: 0.0,
-                        leading: SvgPicture.asset(
-                          "assets/icons/menu_dashbord.svg",
-                          color: Colors.black,
-                        ),
-                        title: Text("Visualizador de Documentos"),
-                      ),
-                      ListTile(
-                        onTap: () {},
-                        horizontalTitleGap: 0.0,
-                        leading: SvgPicture.asset(
-                          "assets/icons/menu_dashbord.svg",
-                          color: Colors.black,
-                        ),
-                        title: Text("Editor de Texto"),
-                      ),
-                      ListTile(
-                        onTap: () {},
-                        horizontalTitleGap: 0.0,
-                        leading: SvgPicture.asset(
-                          "assets/icons/menu_dashbord.svg",
-                          color: Colors.black,
-                        ),
-                        title: Text("Escaner"),
-                      ),
-                      ListTile(
-                        onTap: () {},
-                        horizontalTitleGap: 0.0,
-                        leading: SvgPicture.asset(
-                          "assets/icons/menu_dashbord.svg",
-                          color: Colors.black,
-                        ),
-                        title: Text("Computador"),
-                      ),
-                      ListTile(
-                        onTap: () {},
-                        horizontalTitleGap: 0.0,
-                        leading: SvgPicture.asset(
-                          "assets/icons/menu_dashbord.svg",
-                          color: Colors.black,
-                        ),
-                        title: Text("Todos os Aplicativos"),
-                      ),
-                    ],
-                  ),
-                  Column(
-                    //crossAxisAlignment: CrossAxisAlignment.end,
-                    //mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      ListTile(
-                        onTap: () {},
-                        horizontalTitleGap: 0.0,
-                        leading: SvgPicture.asset(
-                          "assets/icons/menu_dashbord.svg",
-                          color: Colors.black,
-                        ),
-                        title: Text("Todos os Aplicativos"),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ],
               ),
             ),
           ],
-        ),
-      ),
-    );
-  }
-}
-
-class AppListConfig extends StatelessWidget {
-  const AppListConfig({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return InkWell(
-      onTap: () {},
-      child: Container(
-        padding: const EdgeInsets.only(
-          top: defaultPadding * 0.75,
-          bottom: defaultPadding * 0.75,
-          right: 1,
-          left: 1,
-        ),
-        child: SvgPicture.asset(
-          "assets/icons/menu_dashbord.svg",
-          color: Colors.black38,
-        ),
-      ),
-    );
-  }
-}
-
-class SearchField extends StatelessWidget {
-  const SearchField({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return TextField(
-      textAlign: TextAlign.center,
-      decoration: InputDecoration(
-        hintText: "Pesquisar",
-        fillColor: Colors.black12,
-        filled: true,
-        border: OutlineInputBorder(
-          borderSide: BorderSide.none,
-          borderRadius: borderRadiusInput,
-        ),
-        prefixIcon: Container(
-          padding: EdgeInsets.all(defaultPadding * 0.75),
-          child: SvgPicture.asset(
-            "assets/icons/Search.svg",
-            color: Colors.black38,
-          ),
         ),
       ),
     );
