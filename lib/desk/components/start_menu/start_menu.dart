@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../constants.dart';
-import 'components/app_list.dart';
-import 'components/app_list_config.dart';
-import 'components/config_menu.dart';
-import 'components/search_field.dart';
-import 'components/shortcut_menu.dart';
+import 'components/app_list/app_list.dart';
+import 'components/search_bar/app_list_config.dart';
+import 'components/quick_menu/config_menu.dart';
+import 'components/search_bar/search_bar.dart';
+import 'components/search_bar/search_field.dart';
+import 'components/quick_menu/shortcut_menu.dart';
 
 class StartMenu extends StatelessWidget {
   const StartMenu({
@@ -28,44 +29,51 @@ class StartMenu extends StatelessWidget {
           mainAxisSize: MainAxisSize.max,
           //crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            // Left Menu
             Expanded(
               flex: 2,
               child: Container(
                 color: Colors.black12,
                 child: Column(
                   children: [
-                    ShortcutMenu(),
-                    ConfigMenu(),
+                    Expanded(
+                      flex: 6,
+                      child: new Container(
+                        child: ShortcutMenu(),
+                      ),
+                    ),
+                    Expanded(
+                      child: Column(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          Expanded(
+                            child: ConfigMenu(),
+                          ),
+                        ],
+                      ),
+                    ),
                   ],
                 ),
               ),
             ),
+            // Right Menu
             Expanded(
               flex: 10,
               child: Column(
                 children: [
-                  Row(
-                    //crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Expanded(
-                        flex: 4,
-                        child: Container(
-                          padding: const EdgeInsets.only(
-                            top: defaultPadding * 0.75,
-                            bottom: defaultPadding * 0.75,
-                            right: 1,
-                            left: defaultPadding * 0.75,
-                          ),
-                          child: SearchField(),
-                        ),
+                  // Search Box
+                  SearchBar(),
+                  // Main Menu
+                  Expanded(
+                    flex: 7,
+                    child: new Container(
+                      child: new SingleChildScrollView(
+                        child: AppList(),
                       ),
-                      Expanded(
-                        flex: 1,
-                        child: AppListConfig(),
-                      ),
-                    ],
+                    ),
                   ),
-                  AppList(),
+                  // Bottom Menu
                   Expanded(
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
