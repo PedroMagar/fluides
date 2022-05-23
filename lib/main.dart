@@ -2,8 +2,6 @@ import 'package:fluides/constants.dart';
 import 'package:fluides/desk/desk.dart';
 import 'package:flutter/material.dart';
 
-import 'desk/components/desktop/desktop.dart';
-
 void main() {
   runApp(const MyApp());
 }
