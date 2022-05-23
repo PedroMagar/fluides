@@ -3,10 +3,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../constants.dart';
 import 'components/app_list/app_list.dart';
-import 'components/search_bar/app_list_config.dart';
 import 'components/quick_menu/config_menu.dart';
 import 'components/search_bar/search_bar.dart';
-import 'components/search_bar/search_field.dart';
 import 'components/quick_menu/shortcut_menu.dart';
 
 class StartMenu extends StatelessWidget {
@@ -25,76 +23,78 @@ class StartMenu extends StatelessWidget {
       ),
       child: ClipRRect(
         borderRadius: borderRadiusDefault,
-        child: Row(
-          mainAxisSize: MainAxisSize.max,
-          //crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            // Left Menu
-            Expanded(
-              flex: 2,
-              child: Container(
-                color: Colors.black12,
-                child: Column(
-                  children: [
-                    Expanded(
-                      flex: 6,
-                      child: new Container(
-                        child: ShortcutMenu(),
-                      ),
-                    ),
-                    Expanded(
-                      child: Column(
-                        mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: [
-                          Expanded(
-                            child: ConfigMenu(),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            // Right Menu
-            Expanded(
-              flex: 10,
-              child: Column(
-                children: [
-                  // Search Box
-                  SearchBar(),
-                  // Main Menu
-                  Expanded(
-                    flex: 7,
-                    child: new Container(
-                      child: new SingleChildScrollView(
-                        child: AppList(),
-                      ),
-                    ),
-                  ),
-                  // Bottom Menu
-                  Expanded(
+        child: Scaffold(
+          backgroundColor: Colors.white.withOpacity(0),
+          body: SafeArea(
+            child: Row(
+              mainAxisSize: MainAxisSize.max,
+              //crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                // Left Menu
+                Expanded(
+                  flex: 2,
+                  child: Container(
+                    color: Colors.black12,
                     child: Column(
-                      mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.end,
                       children: [
-                        ListTile(
-                          onTap: () {},
-                          horizontalTitleGap: 0.0,
-                          leading: SvgPicture.asset(
-                            "assets/icons/menu_dashbord.svg",
-                            color: Colors.black,
+                        Expanded(
+                          flex: 5,
+                          child: new Container(
+                            child: ShortcutMenu(),
                           ),
-                          title: Text("Todos os Aplicativos"),
+                        ),
+                        Expanded(
+                          flex: 1,
+                          child: Column(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              Expanded(
+                                child: ConfigMenu(),
+                              ),
+                            ],
+                          ),
                         ),
                       ],
                     ),
                   ),
-                ],
-              ),
+                ),
+                // Right Menu
+                Expanded(
+                  flex: 10,
+                  child: Column(
+                    children: [
+                      // Search Box
+                      SearchBar(),
+                      // Main Menu
+                      Expanded(
+                        flex: 7,
+                        child: SingleChildScrollView(child: AppList()),
+                      ),
+                      // Bottom Menu
+                      Expanded(
+                        child: Column(
+                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            ListTile(
+                              onTap: () {},
+                              horizontalTitleGap: 0.0,
+                              leading: SvgPicture.asset(
+                                "assets/icons/menu_dashbord.svg",
+                                color: Colors.black,
+                              ),
+                              title: Text("Todos os Aplicativos"),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
             ),
-          ],
+          ),
         ),
       ),
     );
