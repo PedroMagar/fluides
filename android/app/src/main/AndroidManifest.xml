@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.fluides">
+    package="com.phemg.fluides">
    <application
         android:label="fluides"
         android:name="${applicationName}"
