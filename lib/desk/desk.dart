@@ -21,6 +21,8 @@ class Desk extends StatefulWidget {
 
 class _Desk extends State<Desk> {
   bool _visible = false;
+  bool _visibleWindow = false;
+  bool _visibleNotification = false;
 
   @override
   Widget build(BuildContext context) {
@@ -30,6 +32,7 @@ class _Desk extends State<Desk> {
           Wallpaper(),
           Column(
             children: [
+              // Desktop Work Area
               Expanded(
                 flex: 11,
                 child: Row(
@@ -47,26 +50,47 @@ class _Desk extends State<Desk> {
                     ),
                     Expanded(
                       flex: 6,
-                      child: Padding(
-                        padding: const EdgeInsets.all(defaultPadding),
+                      child: AnimatedOpacity(
+                        // If the widget is visible, animate to 0.0 (invisible).
+                        // If the widget is hidden, animate to 1.0 (fully visible).
+                        opacity: _visibleWindow ? 1.0 : 0.0,
+                        duration: const Duration(milliseconds: 500),
+                        // The green box must be a child of the AnimatedOpacity widget.
                         child: Window(),
                       ),
                     ),
                     Expanded(
                       flex: 3,
-                      child: NotificationMenu(),
+                      child: AnimatedOpacity(
+                        // If the widget is visible, animate to 0.0 (invisible).
+                        // If the widget is hidden, animate to 1.0 (fully visible).
+                        opacity: _visibleNotification ? 1.0 : 0.0,
+                        duration: const Duration(milliseconds: 500),
+                        // The green box must be a child of the AnimatedOpacity widget.
+                        child: NotificationMenu(),
+                      ),
                     ),
                   ],
                   //color: Colors.white,
                 ),
               ),
-              //SizedBox(height: defaultPadding),
+              // Desktop Dock
               Expanded(
                 flex: 1,
                 child: Dock(
                   () {
                     setState(() {
                       _visible = !_visible;
+                    });
+                  },
+                  () {
+                    setState(() {
+                      _visibleNotification = !_visibleNotification;
+                    });
+                  },
+                  () {
+                    setState(() {
+                      _visibleWindow = !_visibleWindow;
                     });
                   },
                 ),
