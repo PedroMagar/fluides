@@ -1,11 +1,27 @@
 import 'package:fluides/constants.dart';
 import 'package:flutter/material.dart';
 
+import 'package:flutter_svg/flutter_svg.dart';
 import 'components/dock/dock.dart';
 import 'components/notification/notification.dart';
 import 'components/start_menu/start_menu.dart';
+import 'components/window/window.dart';
 
-class Desk extends StatelessWidget {
+class Desk extends StatefulWidget {
+  const Desk({
+    super.key,
+    //required this.title,
+  });
+
+  //final String title;
+
+  @override
+  _Desk createState() => _Desk();
+}
+
+class _Desk extends State<Desk> {
+  bool _visible = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,15 +36,20 @@ class Desk extends StatelessWidget {
                   children: [
                     Expanded(
                       flex: 3,
-                      child: StartMenu(),
+                      child: AnimatedOpacity(
+                        // If the widget is visible, animate to 0.0 (invisible).
+                        // If the widget is hidden, animate to 1.0 (fully visible).
+                        opacity: _visible ? 1.0 : 0.0,
+                        duration: const Duration(milliseconds: 500),
+                        // The green box must be a child of the AnimatedOpacity widget.
+                        child: StartMenu(),
+                      ),
                     ),
                     Expanded(
                       flex: 6,
                       child: Padding(
                         padding: const EdgeInsets.all(defaultPadding),
-                        child: Container(
-                            //color: Colors.green[100],
-                            ),
+                        child: Window(),
                       ),
                     ),
                     Expanded(
@@ -42,7 +63,13 @@ class Desk extends StatelessWidget {
               //SizedBox(height: defaultPadding),
               Expanded(
                 flex: 1,
-                child: DockBar(),
+                child: Dock(
+                  () {
+                    setState(() {
+                      _visible = !_visible;
+                    });
+                  },
+                ),
               ),
             ],
           ),
@@ -53,7 +80,7 @@ class Desk extends StatelessWidget {
 }
 
 class Wallpaper extends StatelessWidget {
-  const Wallpaper({
+  Wallpaper({
     Key? key,
   }) : super(key: key);
 
