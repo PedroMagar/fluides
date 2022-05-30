@@ -84,20 +84,97 @@ class Dock extends StatelessWidget {
                 ),
                 Expanded(
                   flex: 2,
-                  child: InkWell(
-                    onTap: () => onNotificationSelected(),
-                    child: Container(
-                      padding: const EdgeInsets.only(
-                        top: defaultPadding * 0.75,
-                        bottom: defaultPadding * 0.75,
-                        right: defaultPadding * 0.75,
-                        left: defaultPadding * 0.75,
+                  child: Row(
+                    children: [
+                      Expanded(
+                        flex: 2,
+                        child: InkWell(
+                          onTap: () => onNotificationSelected(),
+                          child: Container(
+                            padding: const EdgeInsets.only(
+                              top: defaultPadding * 0.25,
+                              bottom: defaultPadding * 0.25,
+                              right: defaultPadding * 0.25,
+                              left: defaultPadding * 0.25,
+                            ),
+                            child: SvgPicture.asset(
+                              "assets/icons/expand_more.svg",
+                              color: Colors.black38,
+                            ),
+                          ),
+                        ),
                       ),
-                      child: SvgPicture.asset(
-                        "assets/icons/menu_notification.svg",
-                        color: Colors.black38,
+                      Expanded(
+                        flex: 2,
+                        child: InkWell(
+                          onTap: () => onNotificationSelected(),
+                          child: Container(
+                            padding: const EdgeInsets.only(
+                              top: defaultPadding * 0.75,
+                              bottom: defaultPadding * 0.75,
+                              right: defaultPadding * 0.75,
+                              left: defaultPadding * 0.75,
+                            ),
+                            child: SvgPicture.asset(
+                              "assets/icons/network_overlay.svg",
+                              color: Colors.black38,
+                            ),
+                          ),
+                        ),
                       ),
-                    ),
+                      Expanded(
+                        flex: 5,
+                        child: InkWell(
+                          onTap: () {},
+                          child: Container(
+                            padding: const EdgeInsets.only(
+                              top: defaultPadding * 0.25,
+                              bottom: defaultPadding * 0.25,
+                              right: defaultPadding * 0.25,
+                              left: defaultPadding * 0.25,
+                            ),
+                            child: Column(
+                              children: [
+                                Expanded(
+                                  child: Container(
+                                    child: Text(
+                                      "12:00",
+                                      textAlign: TextAlign.center,
+                                    ),
+                                  ),
+                                ),
+                                Expanded(
+                                  child: Container(
+                                    child: Text(
+                                      "30/05/2022",
+                                      textAlign: TextAlign.center,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                      Expanded(
+                        flex: 2,
+                        child: InkWell(
+                          onTap: () => onNotificationSelected(),
+                          child: Container(
+                            padding: const EdgeInsets.only(
+                              top: defaultPadding * 0.75,
+                              bottom: defaultPadding * 0.75,
+                              right: defaultPadding * 0.75,
+                              left: defaultPadding * 0.25,
+                            ),
+                            child: SvgPicture.asset(
+                              "assets/icons/menu_notification.svg",
+                              color: Colors.black38,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
               ],
