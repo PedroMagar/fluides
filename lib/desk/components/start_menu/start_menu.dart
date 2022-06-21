@@ -31,34 +31,16 @@ class StartMenu extends StatelessWidget {
               //crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 // Left Menu
-                Expanded(
-                  flex: 2,
-                  child: Container(
-                    color: Colors.black12,
-                    child: Column(
-                      children: [
-                        Expanded(
-                          flex: 5,
-                          child: new Container(
-                            child: ShortcutMenu(),
-                          ),
-                        ),
-                        Expanded(
-                          flex: 1,
-                          child: Column(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            children: [
-                              Expanded(
-                                child: ConfigMenu(),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
+                if (MediaQuery.of(context).size.width > 1250)
+                  Expanded(
+                    flex: 2,
+                    child: LeftMenu(),
                   ),
-                ),
+                if (MediaQuery.of(context).size.width <= 1250)
+                  Expanded(
+                    flex: 4,
+                    child: LeftMenu(),
+                  ),
                 // Right Menu
                 Expanded(
                   flex: 10,
@@ -69,7 +51,10 @@ class StartMenu extends StatelessWidget {
                       // Main Menu
                       Expanded(
                         flex: 7,
-                        child: SingleChildScrollView(child: AppList()),
+                        child: SingleChildScrollView(
+                          controller: ScrollController(),
+                          child: AppList(),
+                        ),
                       ),
                       // Bottom Menu
                       Expanded(
@@ -96,6 +81,44 @@ class StartMenu extends StatelessWidget {
             ),
           ),
         ),
+      ),
+    );
+  }
+}
+
+class LeftMenu extends StatelessWidget {
+  const LeftMenu({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      color: Colors.black12,
+      child: Column(
+        children: [
+          // Shortcut
+          Expanded(
+            flex: 5,
+            child: SingleChildScrollView(
+              controller: ScrollController(),
+              child: ShortcutMenu(),
+            ),
+          ),
+          // Config
+          Expanded(
+            flex: 1,
+            child: Column(
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Expanded(
+                  child: ConfigMenu(),
+                ),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }

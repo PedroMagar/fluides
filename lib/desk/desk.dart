@@ -2,6 +2,7 @@ import 'package:fluides/constants.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_svg/flutter_svg.dart';
+import '../responsive.dart';
 import 'components/dock/dock.dart';
 import 'components/notification/notification.dart';
 import 'components/start_menu/start_menu.dart';
@@ -33,47 +34,22 @@ class _Desk extends State<Desk> {
           Column(
             children: [
               // Desktop Work Area
-              Expanded(
-                flex: 11,
-                child: Row(
-                  children: [
-                    Expanded(
-                      flex: 3,
-                      child: AnimatedOpacity(
-                        // If the widget is visible, animate to 0.0 (invisible).
-                        // If the widget is hidden, animate to 1.0 (fully visible).
-                        opacity: _visible ? 1.0 : 0.0,
-                        duration: const Duration(milliseconds: 500),
-                        // The green box must be a child of the AnimatedOpacity widget.
-                        child: StartMenu(),
-                      ),
-                    ),
-                    Expanded(
-                      flex: 6,
-                      child: AnimatedOpacity(
-                        // If the widget is visible, animate to 0.0 (invisible).
-                        // If the widget is hidden, animate to 1.0 (fully visible).
-                        opacity: _visibleWindow ? 1.0 : 0.0,
-                        duration: const Duration(milliseconds: 500),
-                        // The green box must be a child of the AnimatedOpacity widget.
-                        child: Window(),
-                      ),
-                    ),
-                    Expanded(
-                      flex: 3,
-                      child: AnimatedOpacity(
-                        // If the widget is visible, animate to 0.0 (invisible).
-                        // If the widget is hidden, animate to 1.0 (fully visible).
-                        opacity: _visibleNotification ? 1.0 : 0.0,
-                        duration: const Duration(milliseconds: 500),
-                        // The green box must be a child of the AnimatedOpacity widget.
-                        child: NotificationMenu(),
-                      ),
-                    ),
-                  ],
-                  //color: Colors.white,
+              if (Responsive.isLarge(context) || Responsive.isMedium(context))
+                Expanded(
+                  flex: 11,
+                  child: WorkArea(
+                      visible: _visible,
+                      visibleWindow: _visibleWindow,
+                      visibleNotification: _visibleNotification),
                 ),
-              ),
+              if (Responsive.isSmall(context))
+                Expanded(
+                  flex: 5,
+                  child: WorkArea(
+                      visible: _visible,
+                      visibleWindow: _visibleWindow,
+                      visibleNotification: _visibleNotification),
+                ),
               // Desktop Dock
               Expanded(
                 flex: 1,
@@ -99,6 +75,66 @@ class _Desk extends State<Desk> {
           ),
         ],
       ),
+    );
+  }
+}
+
+class WorkArea extends StatelessWidget {
+  const WorkArea({
+    Key? key,
+    required bool visible,
+    required bool visibleWindow,
+    required bool visibleNotification,
+  })  : _visible = visible,
+        _visibleWindow = visibleWindow,
+        _visibleNotification = visibleNotification,
+        super(key: key);
+
+  final bool _visible;
+  final bool _visibleWindow;
+  final bool _visibleNotification;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        Expanded(
+          flex: 3,
+          child: AnimatedOpacity(
+            // If the widget is visible, animate to 0.0 (invisible).
+            // If the widget is hidden, animate to 1.0 (fully visible).
+            opacity: _visible ? 1.0 : 0.0,
+            duration: const Duration(milliseconds: 500),
+            // The green box must be a child of the AnimatedOpacity widget.
+            child: StartMenu(),
+          ),
+        ),
+        if (Responsive.isLarge(context))
+          Expanded(
+            flex: 6,
+            child: AnimatedOpacity(
+              // If the widget is visible, animate to 0.0 (invisible).
+              // If the widget is hidden, animate to 1.0 (fully visible).
+              opacity: _visibleWindow ? 1.0 : 0.0,
+              duration: const Duration(milliseconds: 500),
+              // The green box must be a child of the AnimatedOpacity widget.
+              child: Window(),
+            ),
+          ),
+        if (Responsive.isLarge(context) || Responsive.isMedium(context))
+          Expanded(
+            flex: 3,
+            child: AnimatedOpacity(
+              // If the widget is visible, animate to 0.0 (invisible).
+              // If the widget is hidden, animate to 1.0 (fully visible).
+              opacity: _visibleNotification ? 1.0 : 0.0,
+              duration: const Duration(milliseconds: 500),
+              // The green box must be a child of the AnimatedOpacity widget.
+              child: NotificationMenu(),
+            ),
+          ),
+      ],
+      //color: Colors.white,
     );
   }
 }
