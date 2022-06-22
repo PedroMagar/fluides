@@ -27,7 +27,7 @@ class Dock extends StatelessWidget {
         bottom: dockPadding,
       ),
       decoration: BoxDecoration(
-        color: Colors.white38,
+        color: Color.fromARGB(95, 215, 229, 250),
         borderRadius: borderRadiusDefault,
       ),
       child: ClipRRect(

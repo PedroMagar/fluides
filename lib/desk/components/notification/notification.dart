@@ -13,7 +13,7 @@ class NotificationMenu extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.all(defaultPadding),
       decoration: BoxDecoration(
-        color: Colors.white38,
+        color: Color.fromARGB(95, 215, 229, 250),
         borderRadius: borderRadiusDefault,
       ),
       child: ClipRRect(

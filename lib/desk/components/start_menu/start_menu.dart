@@ -13,62 +13,69 @@ class StartMenu extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.all(defaultPadding),
-      //padding: const EdgeInsets.all(defaultPadding),
-      decoration: BoxDecoration(
-        color: Colors.white38,
-        borderRadius: borderRadiusDefault,
-      ),
-      child: ClipRRect(
-        borderRadius: borderRadiusDefault,
-        child: Scaffold(
-          backgroundColor: Colors.white.withOpacity(0),
-          body: SafeArea(
-            child: Row(
-              mainAxisSize: MainAxisSize.max,
-              //crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                // Left Menu
-                if (MediaQuery.of(context).size.width > 1250)
-                  Expanded(
-                    flex: 2,
-                    child: QuickMenu(),
-                  ),
-                if (MediaQuery.of(context).size.width <= 1250)
-                  Expanded(
-                    flex: 4,
-                    child: QuickMenu(),
-                  ),
-                // Right Menu
-                Expanded(
-                  flex: 10,
-                  child: Column(
+    return Scaffold(
+      backgroundColor: Colors.white.withOpacity(0),
+      body: Stack(
+        children: <Widget>[
+          Container(
+            margin: EdgeInsets.all(defaultPadding),
+            //padding: const EdgeInsets.all(defaultPadding),
+            decoration: BoxDecoration(
+              color: Color.fromARGB(95, 215, 229, 250),
+              borderRadius: borderRadiusDefault,
+            ),
+            child: ClipRRect(
+              borderRadius: borderRadiusDefault,
+              child: Scaffold(
+                backgroundColor: Colors.white.withOpacity(0),
+                body: SafeArea(
+                  child: Row(
+                    mainAxisSize: MainAxisSize.max,
+                    //crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      // Search Box
-                      SearchBar(),
-                      // Main Menu
-                      Expanded(
-                        flex: 7,
-                        child: SingleChildScrollView(
-                          controller: ScrollController(),
-                          child: AppList(),
+                      // Left Menu
+                      if (MediaQuery.of(context).size.width > 1250)
+                        Expanded(
+                          flex: 2,
+                          child: QuickMenu(),
                         ),
-                      ),
-                      // Bottom Menu
+                      if (MediaQuery.of(context).size.width <= 1250)
+                        Expanded(
+                          flex: 4,
+                          child: QuickMenu(),
+                        ),
+                      // Right Menu
                       Expanded(
+                        flex: 10,
                         child: Column(
-                          mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.end,
                           children: [
-                            ListTile(
-                              onTap: () {},
-                              horizontalTitleGap: 0.0,
-                              leading: SvgPicture.asset(
-                                "assets/icons/menu_dashbord.svg",
-                                color: Colors.black,
+                            // Search Box
+                            SearchBar(),
+                            // Main Menu
+                            Expanded(
+                              flex: 7,
+                              child: SingleChildScrollView(
+                                controller: ScrollController(),
+                                child: AppList(),
                               ),
-                              title: Text("Todos os Aplicativos"),
+                            ),
+                            // Bottom Menu
+                            Expanded(
+                              child: Column(
+                                mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment: MainAxisAlignment.end,
+                                children: [
+                                  ListTile(
+                                    onTap: () {},
+                                    horizontalTitleGap: 0.0,
+                                    leading: SvgPicture.asset(
+                                      "assets/icons/menu_dashbord.svg",
+                                      color: Colors.black,
+                                    ),
+                                    title: Text("Todos os Aplicativos"),
+                                  ),
+                                ],
+                              ),
                             ),
                           ],
                         ),
@@ -76,10 +83,10 @@ class StartMenu extends StatelessWidget {
                     ],
                   ),
                 ),
-              ],
+              ),
             ),
           ),
-        ),
+        ],
       ),
     );
   }
