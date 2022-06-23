@@ -27,6 +27,7 @@ class _Desk extends State<Desk> {
 
   @override
   Widget build(BuildContext context) {
+    int dockSize = 1;
     return Scaffold(
       body: Stack(
         children: <Widget>[
@@ -34,25 +35,28 @@ class _Desk extends State<Desk> {
           Column(
             children: [
               // Desktop Work Area
-              if (Responsive.isLarge(context) || Responsive.isMedium(context))
-                Expanded(
-                  flex: 11,
-                  child: WorkArea(
-                      visible: _visible,
-                      visibleWindow: _visibleWindow,
-                      visibleNotification: _visibleNotification),
-                ),
-              if (Responsive.isSmall(context))
-                Expanded(
-                  flex: 5,
-                  child: WorkArea(
-                      visible: _visible,
-                      visibleWindow: _visibleWindow,
-                      visibleNotification: _visibleNotification),
-                ),
-              // Desktop Dock
               Expanded(
-                flex: 1,
+                flex: (Responsive.tileTall(context) * 2) - dockSize,
+                child: WorkArea(
+                    visible: _visible,
+                    visibleWindow: _visibleWindow,
+                    visibleNotification: _visibleNotification),
+              ),
+              Expanded(
+                flex: dockSize,
+                child: Container(),
+              ),
+            ],
+          ),
+          // Desktop Dock
+          Column(
+            children: [
+              Expanded(
+                flex: (Responsive.tileTall(context) * 2) - dockSize,
+                child: Container(),
+              ),
+              Expanded(
+                flex: dockSize,
                 child: Dock(
                   () {
                     setState(() {
@@ -72,7 +76,7 @@ class _Desk extends State<Desk> {
                 ),
               ),
             ],
-          ),
+          )
         ],
       ),
     );
@@ -80,7 +84,7 @@ class _Desk extends State<Desk> {
 }
 
 class WorkArea extends StatelessWidget {
-  const WorkArea({
+  WorkArea({
     Key? key,
     required bool visible,
     required bool visibleWindow,
@@ -94,87 +98,85 @@ class WorkArea extends StatelessWidget {
   final bool _visibleWindow;
   final bool _visibleNotification;
 
+  List<Widget> stackProcess = [];
+
   @override
   Widget build(BuildContext context) {
+    int startMenuSize = 3;
+    int notificationSize = 3;
+    stackProcess.add(
+      Row(
+        children: [
+          if (Responsive.isLarge(context))
+            Expanded(
+              flex: (Responsive.tileWide(context) / 4).floor().toInt(),
+              child: Container(),
+            ),
+          Expanded(
+            flex: (Responsive.tileWide(context) / 2).floor().toInt(),
+            child: AnimatedOpacity(
+              // If the widget is visible, animate to 0.0 (invisible).
+              // If the widget is hidden, animate to 1.0 (fully visible).
+              opacity: _visibleWindow ? 1.0 : 0.0,
+              duration: const Duration(milliseconds: 500),
+              // The green box must be a child of the AnimatedOpacity widget.
+              child: Window(),
+            ),
+          ),
+          if (Responsive.isLarge(context))
+            Expanded(
+              flex: (Responsive.tileWide(context) / 4).floor().toInt(),
+              child: Container(),
+            ),
+        ],
+      ),
+    );
+    stackProcess.add(
+      Row(
+        children: [
+          if (notificationSize < Responsive.tileWide(context))
+            Expanded(
+              flex: Responsive.tileWide(context) - notificationSize,
+              child: Container(),
+            ),
+          Expanded(
+            flex: notificationSize,
+            child: AnimatedOpacity(
+              // If the widget is visible, animate to 0.0 (invisible).
+              // If the widget is hidden, animate to 1.0 (fully visible).
+              opacity: _visibleNotification ? 1.0 : 0.0,
+              duration: const Duration(milliseconds: 500),
+              // The green box must be a child of the AnimatedOpacity widget.
+              child: NotificationMenu(),
+            ),
+          ),
+        ],
+      ),
+    );
+    stackProcess.add(
+      Row(
+        children: [
+          Expanded(
+            flex: startMenuSize,
+            child: AnimatedOpacity(
+              // If the widget is visible, animate to 0.0 (invisible).
+              // If the widget is hidden, animate to 1.0 (fully visible).
+              opacity: _visible ? 1.0 : 0.0,
+              duration: const Duration(milliseconds: 500),
+              // The green box must be a child of the AnimatedOpacity widget.
+              child: StartMenu(),
+            ),
+          ),
+          if (startMenuSize < Responsive.tileWide(context))
+            Expanded(
+              flex: Responsive.tileWide(context) - startMenuSize,
+              child: Container(),
+            ),
+        ],
+      ),
+    );
     return Stack(
-      children: <Widget>[
-        Row(
-          children: [
-            if (Responsive.isLarge(context))
-              Expanded(
-                flex: 3,
-                child: Container(),
-              ),
-            Expanded(
-              flex: 6,
-              child: AnimatedOpacity(
-                // If the widget is visible, animate to 0.0 (invisible).
-                // If the widget is hidden, animate to 1.0 (fully visible).
-                opacity: _visibleWindow ? 1.0 : 0.0,
-                duration: const Duration(milliseconds: 500),
-                // The green box must be a child of the AnimatedOpacity widget.
-                child: Window(),
-              ),
-            ),
-            if (Responsive.isLarge(context))
-              Expanded(
-                flex: 3,
-                child: Container(),
-              ),
-          ],
-        ),
-        Row(
-          children: [
-            Expanded(
-              flex: 3,
-              child: AnimatedOpacity(
-                // If the widget is visible, animate to 0.0 (invisible).
-                // If the widget is hidden, animate to 1.0 (fully visible).
-                opacity: _visible ? 1.0 : 0.0,
-                duration: const Duration(milliseconds: 500),
-                // The green box must be a child of the AnimatedOpacity widget.
-                child: StartMenu(),
-              ),
-            ),
-            if (Responsive.isLarge(context))
-              Expanded(
-                flex: 9,
-                child: Container(),
-              ),
-            if (Responsive.isMedium(context))
-              Expanded(
-                flex: 3,
-                child: Container(),
-              ),
-          ],
-        ),
-        Row(
-          children: [
-            if (Responsive.isLarge(context))
-              Expanded(
-                flex: 9,
-                child: Container(),
-              ),
-            if (Responsive.isMedium(context))
-              Expanded(
-                flex: 3,
-                child: Container(),
-              ),
-            Expanded(
-              flex: 3,
-              child: AnimatedOpacity(
-                // If the widget is visible, animate to 0.0 (invisible).
-                // If the widget is hidden, animate to 1.0 (fully visible).
-                opacity: _visibleNotification ? 1.0 : 0.0,
-                duration: const Duration(milliseconds: 500),
-                // The green box must be a child of the AnimatedOpacity widget.
-                child: NotificationMenu(),
-              ),
-            ),
-          ],
-        ),
-      ],
-      //color: Colors.white,
+      children: stackProcess,
     );
   }
 }

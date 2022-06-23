@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../../../constants.dart';
+import 'package:fluides/constants.dart';
 import 'app_list_config.dart';
 import 'search_field.dart';
 
