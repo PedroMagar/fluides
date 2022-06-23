@@ -12,8 +12,8 @@ class StartMenu extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    int searchSize = 3;
-    int bottomSize = 2;
+    int searchSize = 4;
+    int bottomSize = 3;
     return Container(
       margin: const EdgeInsets.all(defaultPadding),
       //padding: const EdgeInsets.all(defaultPadding),

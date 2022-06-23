@@ -28,7 +28,7 @@ class MainMenu extends StatelessWidget {
         ),
         // Main Menu
         Expanded(
-          flex: (Responsive.tileTall(context) * 3) - (searchSize + bottomSize),
+          flex: (Responsive.tileTall(context) * 4) - (searchSize + bottomSize),
           child: SingleChildScrollView(
             controller: ScrollController(),
             child: const AppList(),
