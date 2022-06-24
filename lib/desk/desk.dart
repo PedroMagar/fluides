@@ -1,11 +1,10 @@
-import 'package:fluides/constants.dart';
 import 'package:flutter/material.dart';
 
-import 'package:flutter_svg/flutter_svg.dart';
-import '../responsive.dart';
+import 'package:fluides/responsive.dart';
 import 'components/dock/dock.dart';
 import 'components/notification/notification.dart';
 import 'components/start_menu/start_menu.dart';
+import 'components/wallpaper/wallpaper.dart';
 import 'components/window/window.dart';
 
 class Desk extends StatefulWidget {
@@ -105,75 +104,15 @@ class WorkArea extends StatelessWidget {
     int startMenuSize = 3;
     int notificationSize = 3;
     stackProcess.add(
-      Row(
-        children: [
-          if (Responsive.isLarge(context))
-            Expanded(
-              flex: (Responsive.tileWide(context) / 4).floor().toInt(),
-              child: Container(),
-            ),
-          Expanded(
-            flex: (Responsive.tileWide(context) / 2).floor().toInt(),
-            child: AnimatedOpacity(
-              // If the widget is visible, animate to 0.0 (invisible).
-              // If the widget is hidden, animate to 1.0 (fully visible).
-              opacity: _visibleWindow ? 1.0 : 0.0,
-              duration: const Duration(milliseconds: 500),
-              // The green box must be a child of the AnimatedOpacity widget.
-              child: Window(),
-            ),
-          ),
-          if (Responsive.isLarge(context))
-            Expanded(
-              flex: (Responsive.tileWide(context) / 4).floor().toInt(),
-              child: Container(),
-            ),
-        ],
-      ),
+      DisplayWindow(visibleWindow: _visibleWindow),
     );
     stackProcess.add(
-      Row(
-        children: [
-          if (notificationSize < Responsive.tileWide(context))
-            Expanded(
-              flex: Responsive.tileWide(context) - notificationSize,
-              child: Container(),
-            ),
-          Expanded(
-            flex: notificationSize,
-            child: AnimatedOpacity(
-              // If the widget is visible, animate to 0.0 (invisible).
-              // If the widget is hidden, animate to 1.0 (fully visible).
-              opacity: _visibleNotification ? 1.0 : 0.0,
-              duration: const Duration(milliseconds: 500),
-              // The green box must be a child of the AnimatedOpacity widget.
-              child: NotificationMenu(),
-            ),
-          ),
-        ],
-      ),
+      DisplayNotification(
+          notificationSize: notificationSize,
+          visibleNotification: _visibleNotification),
     );
     stackProcess.add(
-      Row(
-        children: [
-          Expanded(
-            flex: startMenuSize,
-            child: AnimatedOpacity(
-              // If the widget is visible, animate to 0.0 (invisible).
-              // If the widget is hidden, animate to 1.0 (fully visible).
-              opacity: _visible ? 1.0 : 0.0,
-              duration: const Duration(milliseconds: 500),
-              // The green box must be a child of the AnimatedOpacity widget.
-              child: StartMenu(),
-            ),
-          ),
-          if (startMenuSize < Responsive.tileWide(context))
-            Expanded(
-              flex: Responsive.tileWide(context) - startMenuSize,
-              child: Container(),
-            ),
-        ],
-      ),
+      DisplayStartMenu(startMenuSize: startMenuSize, visible: _visible),
     );
     return Stack(
       children: stackProcess,
@@ -181,21 +120,113 @@ class WorkArea extends StatelessWidget {
   }
 }
 
-class Wallpaper extends StatelessWidget {
-  Wallpaper({
+class DisplayStartMenu extends StatelessWidget {
+  const DisplayStartMenu({
     Key? key,
-  }) : super(key: key);
+    required this.startMenuSize,
+    required bool visible,
+  })  : _visible = visible,
+        super(key: key);
+
+  final int startMenuSize;
+  final bool _visible;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: const BoxDecoration(
-        image: DecorationImage(
-          image: AssetImage("assets/images/light-gradient.jpg"),
-          fit: BoxFit.cover,
+    return Row(
+      children: [
+        Expanded(
+          flex: startMenuSize,
+          child: AnimatedOpacity(
+            // If the widget is visible, animate to 0.0 (invisible).
+            // If the widget is hidden, animate to 1.0 (fully visible).
+            opacity: _visible ? 1.0 : 0.0,
+            duration: const Duration(milliseconds: 500),
+            // The green box must be a child of the AnimatedOpacity widget.
+            child: StartMenu(),
+          ),
         ),
-      ),
-      child: Container(),
+        if (startMenuSize < Responsive.tileWide(context))
+          Expanded(
+            flex: Responsive.tileWide(context) - startMenuSize,
+            child: Container(),
+          ),
+      ],
+    );
+  }
+}
+
+class DisplayNotification extends StatelessWidget {
+  const DisplayNotification({
+    Key? key,
+    required this.notificationSize,
+    required bool visibleNotification,
+  })  : _visibleNotification = visibleNotification,
+        super(key: key);
+
+  final int notificationSize;
+  final bool _visibleNotification;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        if (notificationSize < Responsive.tileWide(context))
+          Expanded(
+            flex: Responsive.tileWide(context) - notificationSize,
+            child: Container(),
+          ),
+        Expanded(
+          flex: notificationSize,
+          child: AnimatedOpacity(
+            // If the widget is visible, animate to 0.0 (invisible).
+            // If the widget is hidden, animate to 1.0 (fully visible).
+            opacity: _visibleNotification ? 1.0 : 0.0,
+            duration: const Duration(milliseconds: 500),
+            // The green box must be a child of the AnimatedOpacity widget.
+            child: NotificationMenu(),
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class DisplayWindow extends StatelessWidget {
+  const DisplayWindow({
+    Key? key,
+    required bool visibleWindow,
+  })  : _visibleWindow = visibleWindow,
+        super(key: key);
+
+  final bool _visibleWindow;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        if (Responsive.isLarge(context))
+          Expanded(
+            flex: (Responsive.tileWide(context) / 4).floor().toInt(),
+            child: Container(),
+          ),
+        Expanded(
+          flex: (Responsive.tileWide(context) / 2).floor().toInt(),
+          child: AnimatedOpacity(
+            // If the widget is visible, animate to 0.0 (invisible).
+            // If the widget is hidden, animate to 1.0 (fully visible).
+            opacity: _visibleWindow ? 1.0 : 0.0,
+            duration: const Duration(milliseconds: 500),
+            // The green box must be a child of the AnimatedOpacity widget.
+            child: Window(),
+          ),
+        ),
+        if (Responsive.isLarge(context))
+          Expanded(
+            flex: (Responsive.tileWide(context) / 4).floor().toInt(),
+            child: Container(),
+          ),
+      ],
     );
   }
 }
