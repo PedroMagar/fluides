@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 
 import 'package:fluides/responsive.dart';
+import 'components/base_window/base_window.dart';
+import 'components/desktop/components/work_area/work_area.dart';
 import 'components/dock/dock.dart';
 import 'components/notification/notification.dart';
 import 'components/start_menu/start_menu.dart';
 import 'components/wallpaper/wallpaper.dart';
 import 'components/window/window.dart';
+import 'components/application_process/application_process.dart';
 
 class Desk extends StatefulWidget {
   const Desk({
@@ -24,6 +27,12 @@ class _Desk extends State<Desk> {
   bool _visibleWindow = false;
   bool _visibleNotification = false;
 
+  int nextId = 1;
+
+  List<Window> processList = [];
+  List<Widget> processHistory = [];
+
+
   @override
   Widget build(BuildContext context) {
     int dockSize = 1;
@@ -39,7 +48,9 @@ class _Desk extends State<Desk> {
                 child: WorkArea(
                     visible: _visible,
                     visibleWindow: _visibleWindow,
-                    visibleNotification: _visibleNotification),
+                    visibleNotification: _visibleNotification,
+                    //stackProcess: processList,
+                  ),
               ),
               Expanded(
                 flex: dockSize,
@@ -70,6 +81,25 @@ class _Desk extends State<Desk> {
                   () {
                     setState(() {
                       _visibleWindow = !_visibleWindow;
+                      /*processList.add(
+                        Window(
+                          processId: nextId,
+                          visible: false, 
+                          fullscreen: false, 
+                          position_x: 2, 
+                          position_y: 0, 
+                          position_z: 5, 
+                          offset_top: 0, 
+                          offset_bottom: 0, 
+                          offset_left: 2, 
+                          offset_right: 2, 
+                          window: BaseWindow(), 
+                          onWindowOpened: () {}, 
+                          onWindowClosed: () {},
+                        ),
+                      );
+                      processList.firstWhere((element) => element.processId == nextId).setVisibility(true);
+                      nextId += 1;*/
                     });
                   },
                 ),
@@ -82,151 +112,24 @@ class _Desk extends State<Desk> {
   }
 }
 
-class WorkArea extends StatelessWidget {
-  WorkArea({
-    Key? key,
-    required bool visible,
-    required bool visibleWindow,
-    required bool visibleNotification,
-  })  : _visible = visible,
-        _visibleWindow = visibleWindow,
-        _visibleNotification = visibleNotification,
-        super(key: key);
+class RunningProcess extends StatefulWidget{
+  final List<ApplicationProcess> process;
+  final ApplicationProcess onProcessStarted;
+  final int processId;
 
-  final bool _visible;
-  final bool _visibleWindow;
-  final bool _visibleNotification;
-
-  List<Widget> stackProcess = [];
+  RunningProcess({
+    required this.process,
+    required this.onProcessStarted,
+    required this.processId
+  });
 
   @override
-  Widget build(BuildContext context) {
-    int startMenuSize = 3;
-    int notificationSize = 3;
-    stackProcess.add(
-      DisplayWindow(visibleWindow: _visibleWindow),
-    );
-    stackProcess.add(
-      DisplayNotification(
-          notificationSize: notificationSize,
-          visibleNotification: _visibleNotification),
-    );
-    stackProcess.add(
-      DisplayStartMenu(startMenuSize: startMenuSize, visible: _visible),
-    );
-    return Stack(
-      children: stackProcess,
-    );
-  }
+  _RunningProcessState createState() => _RunningProcessState();
 }
 
-class DisplayStartMenu extends StatelessWidget {
-  const DisplayStartMenu({
-    Key? key,
-    required this.startMenuSize,
-    required bool visible,
-  })  : _visible = visible,
-        super(key: key);
-
-  final int startMenuSize;
-  final bool _visible;
-
+class _RunningProcessState extends State<RunningProcess> {
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Expanded(
-          flex: startMenuSize,
-          child: AnimatedOpacity(
-            // If the widget is visible, animate to 0.0 (invisible).
-            // If the widget is hidden, animate to 1.0 (fully visible).
-            opacity: _visible ? 1.0 : 0.0,
-            duration: const Duration(milliseconds: 500),
-            // The green box must be a child of the AnimatedOpacity widget.
-            child: StartMenu(),
-          ),
-        ),
-        if (startMenuSize < Responsive.tileWide(context))
-          Expanded(
-            flex: Responsive.tileWide(context) - startMenuSize,
-            child: Container(),
-          ),
-      ],
-    );
-  }
-}
-
-class DisplayNotification extends StatelessWidget {
-  const DisplayNotification({
-    Key? key,
-    required this.notificationSize,
-    required bool visibleNotification,
-  })  : _visibleNotification = visibleNotification,
-        super(key: key);
-
-  final int notificationSize;
-  final bool _visibleNotification;
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      children: [
-        if (notificationSize < Responsive.tileWide(context))
-          Expanded(
-            flex: Responsive.tileWide(context) - notificationSize,
-            child: Container(),
-          ),
-        Expanded(
-          flex: notificationSize,
-          child: AnimatedOpacity(
-            // If the widget is visible, animate to 0.0 (invisible).
-            // If the widget is hidden, animate to 1.0 (fully visible).
-            opacity: _visibleNotification ? 1.0 : 0.0,
-            duration: const Duration(milliseconds: 500),
-            // The green box must be a child of the AnimatedOpacity widget.
-            child: NotificationMenu(),
-          ),
-        ),
-      ],
-    );
-  }
-}
-
-class DisplayWindow extends StatelessWidget {
-  const DisplayWindow({
-    Key? key,
-    required bool visibleWindow,
-  })  : _visibleWindow = visibleWindow,
-        super(key: key);
-
-  final bool _visibleWindow;
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      children: [
-        if (Responsive.isLarge(context))
-          Expanded(
-            flex: (Responsive.tileWide(context) / 4).floor().toInt(),
-            child: Container(),
-          ),
-        Expanded(
-          flex: (Responsive.tileWide(context) / 2).floor().toInt(),
-          child: AnimatedOpacity(
-            // If the widget is visible, animate to 0.0 (invisible).
-            // If the widget is hidden, animate to 1.0 (fully visible).
-            opacity: _visibleWindow ? 1.0 : 0.0,
-            duration: const Duration(milliseconds: 500),
-            // The green box must be a child of the AnimatedOpacity widget.
-            child: Window(),
-          ),
-        ),
-        if (Responsive.isLarge(context))
-          Expanded(
-            flex: (Responsive.tileWide(context) / 4).floor().toInt(),
-            child: Container(),
-          ),
-      ],
-    );
+    return Stack();
   }
 }
