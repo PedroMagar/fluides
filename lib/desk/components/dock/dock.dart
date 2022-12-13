@@ -1,26 +1,66 @@
+import 'package:fluides/desk/components/application/application.dart';
 import 'package:fluides/responsive.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import '../../../constants.dart';
 
-class Dock extends StatelessWidget {
-  /*const Dock({
+class Dock extends StatefulWidget {
+  Dock({
     Key? key,
-  }) : super(key: key);*/
-  //final bool startSelected;
+    required this.applicationList,
+    required this.applicationRunning,
+    required this.onStartSelected,
+    required this.onNotificationSelected,
+    required this.onWindowSelected,
+  }) : super(key: key);
+
+  List<Application> applicationList;
+  List<Widget> applicationRunning;
+
   final VoidCallback onStartSelected;
   final VoidCallback onNotificationSelected;
   final VoidCallback onWindowSelected;
 
-  Dock(
-    //@required this.startSelected,
-    this.onStartSelected,
-    this.onNotificationSelected,
-    this.onWindowSelected,
-  );
+  void addToDock() {
+    applicationRunning.add(
+      Expanded(
+        flex: 1,
+        child: InkWell(
+          onTap: () => onWindowSelected(),
+          child: Container(
+            padding: const EdgeInsets.only(
+              top: defaultPadding * 0.75,
+              bottom: defaultPadding * 0.75,
+              right: defaultPadding * 0.75,
+              left: defaultPadding * 0.75,
+            ),
+            child: SvgPicture.asset(
+              "assets/icons/documents.svg",
+              color: Colors.black38,
+            ),
+          ),
+        ),
+      ),
+    );
+  }
 
   @override
+  State<Dock> createState() => _DockState();
+}
+
+class _DockState extends State<Dock> {
+  @override
   Widget build(BuildContext context) {
+    /*bool start_menu = true;
+    bool applications = true;
+    bool notifications = true;
+
+    int start_menu_flex = 1;
+    int applications_flex = 1;
+    int notifications_flex = 1;
+
+    if (Responsive.isLarge(context)) {}*/
+
     int startSize = 3;
     int endSize = 3;
     return Container(
@@ -48,7 +88,10 @@ class Dock extends StatelessWidget {
                       Expanded(
                         flex: 1,
                         child: InkWell(
-                          onTap: () => onStartSelected(),
+                          onTap: () => {
+                            widget.onStartSelected(),
+                            widget.addToDock(),
+                          },
                           child: Container(
                             padding: const EdgeInsets.only(
                               top: defaultPadding * 0.75,
@@ -75,20 +118,23 @@ class Dock extends StatelessWidget {
                   Expanded(
                     flex: (Responsive.tileTall(context) * 2) -
                         (startSize + endSize),
-                    child: InkWell(
-                      onTap: () => onWindowSelected(),
-                      child: Container(
-                        padding: const EdgeInsets.only(
-                          top: defaultPadding * 0.75,
-                          bottom: defaultPadding * 0.75,
-                          right: defaultPadding * 0.75,
-                          left: defaultPadding * 0.75,
+                    child: Row(
+                      children: [
+                        Expanded(
+                          flex: 3,
+                          child: Container(),
                         ),
-                        child: SvgPicture.asset(
-                          "assets/icons/documents.svg",
-                          color: Colors.black38,
+                        Expanded(
+                          flex: 3,
+                          child: Row(
+                            children: widget.applicationRunning,
+                          ),
                         ),
-                      ),
+                        Expanded(
+                          flex: 3,
+                          child: Container(),
+                        ),
+                      ],
                     ),
                   ),
                 Expanded(
@@ -107,7 +153,7 @@ class Dock extends StatelessWidget {
                             Expanded(
                               flex: 2,
                               child: InkWell(
-                                onTap: () => onNotificationSelected(),
+                                onTap: () => widget.onNotificationSelected(),
                                 child: Container(
                                   padding: const EdgeInsets.only(
                                     top: defaultPadding * 0.25,
@@ -125,7 +171,7 @@ class Dock extends StatelessWidget {
                             Expanded(
                               flex: 2,
                               child: InkWell(
-                                onTap: () => onNotificationSelected(),
+                                onTap: () => widget.onNotificationSelected(),
                                 child: Container(
                                   padding: const EdgeInsets.only(
                                     top: defaultPadding * 0.75,
@@ -177,7 +223,7 @@ class Dock extends StatelessWidget {
                             Expanded(
                               flex: 2,
                               child: InkWell(
-                                onTap: () => onNotificationSelected(),
+                                onTap: () => widget.onNotificationSelected(),
                                 child: Container(
                                   padding: const EdgeInsets.only(
                                     top: defaultPadding * 0.75,

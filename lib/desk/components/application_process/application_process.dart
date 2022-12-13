@@ -9,6 +9,7 @@ class ApplicationProcess {
   int position_y;
   int position_z;
   String icon;
+  String name;
   BaseWindow window;
 
   ApplicationProcess({
@@ -18,7 +19,7 @@ class ApplicationProcess {
     this.position_y = 0,
     this.position_z = 0,
     required this.icon,
-    required this.window
+    required this.name,
+    required this.window,
   });
-
 }
