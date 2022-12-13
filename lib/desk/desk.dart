@@ -52,6 +52,16 @@ class _Desk extends State<Desk> {
   List<Window> processList = [];
   List<Widget> processHistory = [];
 
+  void addToDock(Widget wd) {
+    applicationRunningWidget.add(wd);
+  }
+
+  void removeFromDock(int processId) {
+    if (applicationRunningWidget.length > 0) {
+      applicationRunningWidget.removeAt(0);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     int dockSize = 1;
@@ -102,27 +112,9 @@ class _Desk extends State<Desk> {
                   onWindowSelected: () {
                     setState(() {
                       _visibleWindow = !_visibleWindow;
-                      /*processList.add(
-                        Window(
-                          processId: nextId,
-                          visible: false, 
-                          fullscreen: false, 
-                          position_x: 2, 
-                          position_y: 0, 
-                          position_z: 5, 
-                          offset_top: 0, 
-                          offset_bottom: 0, 
-                          offset_left: 2, 
-                          offset_right: 2, 
-                          window: BaseWindow(), 
-                          onWindowOpened: () {}, 
-                          onWindowClosed: () {},
-                        ),
-                      );
-                      processList.firstWhere((element) => element.processId == nextId).setVisibility(true);
-                      nextId += 1;*/
                     });
                   },
+                  onAddToDock: (wd) => applicationRunningWidget.add(wd),
                 ),
               ),
             ],

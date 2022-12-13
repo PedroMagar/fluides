@@ -12,6 +12,7 @@ class Dock extends StatefulWidget {
     required this.onStartSelected,
     required this.onNotificationSelected,
     required this.onWindowSelected,
+    required this.onAddToDock,
   }) : super(key: key);
 
   List<Application> applicationList;
@@ -20,6 +21,8 @@ class Dock extends StatefulWidget {
   final VoidCallback onStartSelected;
   final VoidCallback onNotificationSelected;
   final VoidCallback onWindowSelected;
+
+  final Function(Widget) onAddToDock;
 
   void addToDock() {
     applicationRunning.add(
@@ -44,6 +47,12 @@ class Dock extends StatefulWidget {
     );
   }
 
+  void removeFromDock(int processId) {
+    if (applicationRunning.length > 0) {
+      applicationRunning.removeAt(0);
+    }
+  }
+
   @override
   State<Dock> createState() => _DockState();
 }
@@ -60,6 +69,14 @@ class _DockState extends State<Dock> {
     int notifications_flex = 1;
 
     if (Responsive.isLarge(context)) {}*/
+    int applicationRunningOffset =
+        4 - (widget.applicationRunning.length / 2).floor().toInt();
+
+    if (applicationRunningOffset < 0) {
+      applicationRunningOffset = 0;
+    }
+
+    int applicationRunningSize = 10 - (applicationRunningOffset * 2);
 
     int startSize = 3;
     int endSize = 3;
@@ -82,6 +99,7 @@ class _DockState extends State<Dock> {
               mainAxisSize: MainAxisSize.max,
               children: [
                 Expanded(
+                  // Start Menu
                   flex: startSize,
                   child: Row(
                     children: [
@@ -90,7 +108,27 @@ class _DockState extends State<Dock> {
                         child: InkWell(
                           onTap: () => {
                             widget.onStartSelected(),
-                            widget.addToDock(),
+                            //widget.addToDock(),
+                            widget.onAddToDock(
+                              Expanded(
+                                flex: 1,
+                                child: InkWell(
+                                  onTap: () => widget.onWindowSelected(),
+                                  child: Container(
+                                    padding: const EdgeInsets.only(
+                                      top: defaultPadding * 0.75,
+                                      bottom: defaultPadding * 0.75,
+                                      right: defaultPadding * 0.75,
+                                      left: defaultPadding * 0.75,
+                                    ),
+                                    child: SvgPicture.asset(
+                                      "assets/icons/documents.svg",
+                                      color: Colors.black38,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
                           },
                           child: Container(
                             padding: const EdgeInsets.only(
@@ -116,28 +154,30 @@ class _DockState extends State<Dock> {
                 ),
                 if (Responsive.isSmall(context) == false)
                   Expanded(
+                    // Running Applications
                     flex: (Responsive.tileTall(context) * 2) -
                         (startSize + endSize),
                     child: Row(
                       children: [
                         Expanded(
-                          flex: 3,
+                          flex: applicationRunningOffset,
                           child: Container(),
                         ),
                         Expanded(
-                          flex: 3,
+                          flex: applicationRunningSize,
                           child: Row(
                             children: widget.applicationRunning,
                           ),
                         ),
                         Expanded(
-                          flex: 3,
+                          flex: applicationRunningOffset,
                           child: Container(),
                         ),
                       ],
                     ),
                   ),
                 Expanded(
+                  // Notification
                   flex: endSize,
                   child: Row(
                     children: [
@@ -153,7 +193,10 @@ class _DockState extends State<Dock> {
                             Expanded(
                               flex: 2,
                               child: InkWell(
-                                onTap: () => widget.onNotificationSelected(),
+                                onTap: () => {
+                                  widget.onNotificationSelected(),
+                                  widget.removeFromDock(0),
+                                },
                                 child: Container(
                                   padding: const EdgeInsets.only(
                                     top: defaultPadding * 0.25,

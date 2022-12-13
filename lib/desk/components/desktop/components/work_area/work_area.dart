@@ -32,6 +32,7 @@ class _WorkAreaState extends State<WorkArea> {
   Widget build(BuildContext context) {
     int startMenuSize = 3;
     int notificationSize = 3;
+
     widget.stackProcess.add(
       DisplayWindow(
         visibleWindow: widget._visibleWindow,
@@ -39,14 +40,17 @@ class _WorkAreaState extends State<WorkArea> {
         onWindowOpened: () {},
       ),
     );
+
     widget.stackProcess.add(
       DisplayNotification(
           notificationSize: notificationSize,
           visibleNotification: widget._visibleNotification),
     );
+
     widget.stackProcess.add(
       DisplayStartMenu(startMenuSize: startMenuSize, visible: widget._visible),
     );
+
     return Stack(
       children: widget.stackProcess,
     );
