@@ -1,12 +1,9 @@
-import 'package:fluides/desk/components/application/application.dart';
+import 'package:fluides/process_manager/components/application/application.dart';
 import 'package:flutter/material.dart';
 
 import 'package:fluides/responsive.dart';
-import 'components/base_window/base_window.dart';
 import 'components/desktop/components/work_area/work_area.dart';
 import 'components/dock/dock.dart';
-import 'components/notification/notification.dart';
-import 'components/start_menu/start_menu.dart';
 import 'components/wallpaper/wallpaper.dart';
 import 'components/window/window.dart';
 import 'components/application_process/application_process.dart';
@@ -114,7 +111,7 @@ class _Desk extends State<Desk> {
                       _visibleWindow = !_visibleWindow;
                     });
                   },
-                  onAddToDock: (wd) => applicationRunningWidget.add(wd),
+                  //onAddToDock: (wd) => applicationRunningWidget.add(wd),
                 ),
               ),
             ],

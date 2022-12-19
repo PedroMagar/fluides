@@ -37,7 +37,7 @@ class DisplayWindow extends StatelessWidget {
             duration: const Duration(milliseconds: 500),
             onEnd: () => _visibleWindow ? onWindowOpened() : onWindowClosed(),
             // The green box must be a child of the AnimatedOpacity widget.
-            child: BaseWindow(),
+            child: BaseWindow(name: "Window"),
           ),
         ),
         if (Responsive.isLarge(context))
@@ -54,12 +54,13 @@ class DisplayStartMenu extends StatelessWidget {
   const DisplayStartMenu({
     Key? key,
     required this.startMenuSize,
-    required bool visible,
-  })  : _visible = visible,
-        super(key: key);
+    required this.visible,
+    required this.StartApp,
+  }) : super(key: key);
 
   final int startMenuSize;
-  final bool _visible;
+  final bool visible;
+  final VoidCallback StartApp;
 
   @override
   Widget build(BuildContext context) {
@@ -70,10 +71,12 @@ class DisplayStartMenu extends StatelessWidget {
           child: AnimatedOpacity(
             // If the widget is visible, animate to 0.0 (invisible).
             // If the widget is hidden, animate to 1.0 (fully visible).
-            opacity: _visible ? 1.0 : 0.0,
+            opacity: visible ? 1.0 : 0.0,
             duration: const Duration(milliseconds: 500),
             // The green box must be a child of the AnimatedOpacity widget.
-            child: StartMenu(),
+            child: StartMenu(
+              StartApp: () {},
+            ),
           ),
         ),
         if (startMenuSize < Responsive.tileWide(context))

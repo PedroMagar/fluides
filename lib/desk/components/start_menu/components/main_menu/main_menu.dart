@@ -1,10 +1,8 @@
 import 'package:fluides/responsive.dart';
-import 'package:fluides/desk/components/start_menu/components/quick_menu/quick_menu.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import 'package:fluides/constants.dart';
-import 'components/app_list/app_list.dart';
 import 'components/search_bar/search_bar.dart';
 
 class MainMenu extends StatelessWidget {
@@ -12,10 +10,14 @@ class MainMenu extends StatelessWidget {
     Key? key,
     required this.searchSize,
     required this.bottomSize,
+    required this.appList,
+    required this.StartApp,
   }) : super(key: key);
 
   final int searchSize;
   final int bottomSize;
+  final Widget appList;
+  final VoidCallback StartApp;
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +33,7 @@ class MainMenu extends StatelessWidget {
           flex: (Responsive.tileTall(context) * 4) - (searchSize + bottomSize),
           child: SingleChildScrollView(
             controller: ScrollController(),
-            child: const AppList(),
+            child: appList,
           ),
         ),
         // Bottom Menu
@@ -42,7 +44,9 @@ class MainMenu extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
               ListTile(
-                onTap: () {},
+                onTap: () {
+                  StartApp();
+                },
                 horizontalTitleGap: 0.0,
                 leading: SvgPicture.asset(
                   "assets/icons/menu_dashbord.svg",

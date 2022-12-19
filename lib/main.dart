@@ -1,9 +1,14 @@
 import 'package:fluides/constants.dart';
 import 'package:fluides/desk/desk.dart';
+import 'package:fluides/process_manager/process_manager.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(const Fluides());
+  runApp(MultiProvider(
+    providers: [ChangeNotifierProvider(create: (context) => ProcessManager())],
+    child: const Fluides(),
+  ));
 }
 
 class Fluides extends StatelessWidget {

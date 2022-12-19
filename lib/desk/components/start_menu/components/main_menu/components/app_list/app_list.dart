@@ -1,5 +1,12 @@
+import 'package:fluides/applications/file_manager/file_manager.dart';
+import 'package:fluides/applications/model_application/model_application.dart';
+import 'package:fluides/desk/components/base_window/base_window.dart';
+import 'package:fluides/desk/components/window/window.dart';
+import 'package:fluides/process_manager/components/application_process/application_process.dart';
+import 'package:fluides/process_manager/process_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:provider/provider.dart';
 
 class AppList extends StatelessWidget {
   const AppList({
@@ -8,118 +15,134 @@ class AppList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      //crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        ListTile(
-          onTap: () {},
-          horizontalTitleGap: 0.0,
-          leading: SvgPicture.asset(
-            "assets/icons/menu_dashbord.svg",
-            color: Colors.black,
+    return Consumer<ProcessManager>(builder: (context, apps, child) {
+      return Column(
+        //crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          ModelApplication(),
+          FileManager(),
+          ListTile(
+            // Atualizar
+            onTap: () {},
+            horizontalTitleGap: 0.0,
+            leading: SvgPicture.asset(
+              "assets/icons/menu_dashbord.svg",
+              color: Colors.black,
+            ),
+            title: Text("Atualizar"),
           ),
-          title: Text("Atualizar"),
-        ),
-        ListTile(
-          onTap: () {},
-          horizontalTitleGap: 0.0,
-          leading: SvgPicture.asset(
-            "assets/icons/menu_dashbord.svg",
-            color: Colors.black,
+          ListTile(
+            // Video
+            onTap: () {},
+            horizontalTitleGap: 0.0,
+            leading: SvgPicture.asset(
+              "assets/icons/menu_dashbord.svg",
+              color: Colors.black,
+            ),
+            title: Text("Video"),
           ),
-          title: Text("Video"),
-        ),
-        ListTile(
-          onTap: () {},
-          horizontalTitleGap: 0.0,
-          leading: SvgPicture.asset(
-            "assets/icons/menu_dashbord.svg",
-            color: Colors.black,
+          ListTile(
+            // Terminal
+            onTap: () {},
+            horizontalTitleGap: 0.0,
+            leading: SvgPicture.asset(
+              "assets/icons/menu_dashbord.svg",
+              color: Colors.black,
+            ),
+            title: Text("Terminal"),
           ),
-          title: Text("Terminal"),
-        ),
-        ListTile(
-          onTap: () {},
-          horizontalTitleGap: 0.0,
-          leading: SvgPicture.asset(
-            "assets/icons/menu_dashbord.svg",
-            color: Colors.black,
+          ListTile(
+            // Gerenciador de Dispositivos
+            onTap: () {},
+            horizontalTitleGap: 0.0,
+            leading: SvgPicture.asset(
+              "assets/icons/menu_dashbord.svg",
+              color: Colors.black,
+            ),
+            title: Text("Gerenciador de Dispositivos"),
           ),
-          title: Text("Gerenciador de Dispositivos"),
-        ),
-        ListTile(
-          onTap: () {},
-          horizontalTitleGap: 0.0,
-          leading: SvgPicture.asset(
-            "assets/icons/menu_dashbord.svg",
-            color: Colors.black,
+          ListTile(
+            // Gerenciador de Arquivos
+            onTap: () {},
+            horizontalTitleGap: 0.0,
+            leading: SvgPicture.asset(
+              "assets/icons/menu_dashbord.svg",
+              color: Colors.black,
+            ),
+            title: Text("Gerenciador de Arquivos"),
           ),
-          title: Text("Gerenciador de Arquivos"),
-        ),
-        ListTile(
-          onTap: () {},
-          horizontalTitleGap: 0.0,
-          leading: SvgPicture.asset(
-            "assets/icons/menu_dashbord.svg",
-            color: Colors.black,
+          ListTile(
+            // Gravador de Tela
+            onTap: () {},
+            horizontalTitleGap: 0.0,
+            leading: SvgPicture.asset(
+              "assets/icons/menu_dashbord.svg",
+              color: Colors.black,
+            ),
+            title: Text("Gravador de Tela"),
           ),
-          title: Text("Gravador de Tela"),
-        ),
-        ListTile(
-          onTap: () {},
-          horizontalTitleGap: 0.0,
-          leading: SvgPicture.asset(
-            "assets/icons/menu_dashbord.svg",
-            color: Colors.black,
+          ListTile(
+            // Imagem
+            onTap: () {},
+            horizontalTitleGap: 0.0,
+            leading: SvgPicture.asset(
+              "assets/icons/menu_dashbord.svg",
+              color: Colors.black,
+            ),
+            title: Text("Imagem"),
           ),
-          title: Text("Imagem"),
-        ),
-        ListTile(
-          onTap: () {},
-          horizontalTitleGap: 0.0,
-          leading: SvgPicture.asset(
-            "assets/icons/menu_dashbord.svg",
-            color: Colors.black,
+          ListTile(
+            // Álbum
+            onTap: () {},
+            horizontalTitleGap: 0.0,
+            leading: SvgPicture.asset(
+              "assets/icons/menu_dashbord.svg",
+              color: Colors.black,
+            ),
+            title: Text("Álbum"),
           ),
-          title: Text("Álbum"),
-        ),
-        ListTile(
-          onTap: () {},
-          horizontalTitleGap: 0.0,
-          leading: SvgPicture.asset(
-            "assets/icons/menu_dashbord.svg",
-            color: Colors.black,
+          ListTile(
+            // Visualizador de Documentos
+            onTap: () {},
+            horizontalTitleGap: 0.0,
+            leading: SvgPicture.asset(
+              "assets/icons/menu_dashbord.svg",
+              color: Colors.black,
+            ),
+            title: Text("Visualizador de Documentos"),
           ),
-          title: Text("Visualizador de Documentos"),
-        ),
-        ListTile(
-          onTap: () {},
-          horizontalTitleGap: 0.0,
-          leading: SvgPicture.asset(
-            "assets/icons/menu_dashbord.svg",
-            color: Colors.black,
+          ListTile(
+            // Editor de Texto
+            onTap: () {},
+            horizontalTitleGap: 0.0,
+            leading: SvgPicture.asset(
+              "assets/icons/menu_dashbord.svg",
+              color: Colors.black,
+            ),
+            title: Text("Editor de Texto"),
           ),
-          title: Text("Editor de Texto"),
-        ),
-        ListTile(
-          onTap: () {},
-          horizontalTitleGap: 0.0,
-          leading: SvgPicture.asset(
-            "assets/icons/menu_dashbord.svg",
-            color: Colors.black,
+          ListTile(
+            // Escaner
+            onTap: () {},
+            horizontalTitleGap: 0.0,
+            leading: SvgPicture.asset(
+              "assets/icons/menu_dashbord.svg",
+              color: Colors.black,
+            ),
+            title: Text("Escaner"),
           ),
-          title: Text("Escaner"),
-        ),
-        ListTile(
-          onTap: () {},
-          horizontalTitleGap: 0.0,
-          leading: SvgPicture.asset(
-            "assets/icons/menu_dashbord.svg",
-            color: Colors.black,
+          ListTile(
+            // Computador
+            onTap: () {},
+            horizontalTitleGap: 0.0,
+            leading: SvgPicture.asset(
+              "assets/icons/menu_dashbord.svg",
+              color: Colors.black,
+            ),
+            title: Text("Computador"),
           ),
-          title: Text("Computador"),
-        ),
-      ],
-    );
+        ],
+      );
+    });
   }
 }

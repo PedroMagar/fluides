@@ -3,12 +3,11 @@ import 'package:flutter/material.dart';
 
 import '../../../constants.dart';
 
-
 class Window extends StatelessWidget {
-  const Window({
+  Window({
     Key? key,
     required bool visibleWindow,
-    required bool fullscreen, 
+    required bool fullscreen,
     required int position_x,
     required int position_y,
     required int position_z,
@@ -31,7 +30,7 @@ class Window extends StatelessWidget {
         _window = window,
         super(key: key);
 
-  final bool _visible;
+  bool _visible;
   final bool _fullscreen;
   final int _position_x;
   final int _position_y;
@@ -45,6 +44,10 @@ class Window extends StatelessWidget {
 
   final VoidCallback onWindowOpened;
   final VoidCallback onWindowClosed;
+
+  void setVisibility(bool visible) {
+    _visible = visible;
+  }
 
   @override
   Widget build(BuildContext context) {

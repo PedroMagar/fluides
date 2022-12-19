@@ -1,7 +1,9 @@
-import 'package:fluides/desk/components/application/application.dart';
+import 'package:fluides/process_manager/components/application/application.dart';
+import 'package:fluides/process_manager/process_manager.dart';
 import 'package:fluides/responsive.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:provider/provider.dart';
 import '../../../constants.dart';
 
 class Dock extends StatefulWidget {
@@ -12,7 +14,7 @@ class Dock extends StatefulWidget {
     required this.onStartSelected,
     required this.onNotificationSelected,
     required this.onWindowSelected,
-    required this.onAddToDock,
+    // required this.onAddToDock,
   }) : super(key: key);
 
   List<Application> applicationList;
@@ -22,7 +24,8 @@ class Dock extends StatefulWidget {
   final VoidCallback onNotificationSelected;
   final VoidCallback onWindowSelected;
 
-  final Function(Widget) onAddToDock;
+  /*final Function(Widget) onAddToDock;
+
 
   void addToDock() {
     applicationRunning.add(
@@ -51,7 +54,7 @@ class Dock extends StatefulWidget {
     if (applicationRunning.length > 0) {
       applicationRunning.removeAt(0);
     }
-  }
+  }*/
 
   @override
   State<Dock> createState() => _DockState();
@@ -80,36 +83,37 @@ class _DockState extends State<Dock> {
 
     int startSize = 3;
     int endSize = 3;
-    return Container(
-      margin: const EdgeInsets.only(
-        left: dockPadding,
-        right: dockPadding,
-        bottom: dockPadding,
-      ),
-      decoration: BoxDecoration(
-        color: kLightColor,
-        borderRadius: borderRadiusDefault,
-      ),
-      child: ClipRRect(
-        borderRadius: borderRadiusDefault,
-        child: Scaffold(
-          backgroundColor: Colors.white.withOpacity(0),
-          body: SafeArea(
-            child: Row(
-              mainAxisSize: MainAxisSize.max,
-              children: [
-                Expanded(
-                  // Start Menu
-                  flex: startSize,
-                  child: Row(
-                    children: [
-                      Expanded(
-                        flex: 1,
-                        child: InkWell(
-                          onTap: () => {
-                            widget.onStartSelected(),
-                            //widget.addToDock(),
-                            widget.onAddToDock(
+    return Consumer<ProcessManager>(builder: (context, apps, child) {
+      return Container(
+        margin: const EdgeInsets.only(
+          left: dockPadding,
+          right: dockPadding,
+          bottom: dockPadding,
+        ),
+        decoration: BoxDecoration(
+          color: kLightColor,
+          borderRadius: borderRadiusDefault,
+        ),
+        child: ClipRRect(
+          borderRadius: borderRadiusDefault,
+          child: Scaffold(
+            backgroundColor: Colors.white.withOpacity(0),
+            body: SafeArea(
+              child: Row(
+                mainAxisSize: MainAxisSize.max,
+                children: [
+                  Expanded(
+                    // Start Menu
+                    flex: startSize,
+                    child: Row(
+                      children: [
+                        Expanded(
+                          flex: 1,
+                          child: InkWell(
+                            onTap: () => {
+                              widget.onStartSelected(),
+                              //widget.addToDock(),
+                              /*widget.onAddToDock(
                               Expanded(
                                 flex: 1,
                                 child: InkWell(
@@ -128,170 +132,171 @@ class _DockState extends State<Dock> {
                                   ),
                                 ),
                               ),
-                            ),
-                          },
-                          child: Container(
-                            padding: const EdgeInsets.only(
-                              top: defaultPadding * 0.75,
-                              bottom: defaultPadding * 0.75,
-                              right: defaultPadding * 0.75,
-                              left: defaultPadding * 0.75,
-                            ),
-                            child: SvgPicture.asset(
-                              "assets/icons/start_512x512.svg",
-                              color: Colors.black38,
+                            ),*/
+                            },
+                            child: Container(
+                              padding: const EdgeInsets.only(
+                                top: defaultPadding * 0.75,
+                                bottom: defaultPadding * 0.75,
+                                right: defaultPadding * 0.75,
+                                left: defaultPadding * 0.75,
+                              ),
+                              child: SvgPicture.asset(
+                                "assets/icons/start_512x512.svg",
+                                color: Colors.black38,
+                              ),
                             ),
                           ),
                         ),
-                      ),
-                      if (Responsive.isMedium(context))
-                        Expanded(
-                          flex: 2,
-                          child: Container(),
-                        ),
-                    ],
+                        if (Responsive.isMedium(context))
+                          Expanded(
+                            flex: 2,
+                            child: Container(),
+                          ),
+                      ],
+                    ),
                   ),
-                ),
-                if (Responsive.isSmall(context) == false)
+                  if (Responsive.isSmall(context) == false)
+                    Expanded(
+                      // Running Applications
+                      flex: (Responsive.tileTall(context) * 2) -
+                          (startSize + endSize),
+                      child: Row(
+                        children: [
+                          Expanded(
+                            flex: applicationRunningOffset,
+                            child: Container(),
+                          ),
+                          Expanded(
+                            flex: applicationRunningSize,
+                            child: Row(
+                              children: apps.runningOnDock(),
+                            ),
+                          ),
+                          Expanded(
+                            flex: applicationRunningOffset,
+                            child: Container(),
+                          ),
+                        ],
+                      ),
+                    ),
                   Expanded(
-                    // Running Applications
-                    flex: (Responsive.tileTall(context) * 2) -
-                        (startSize + endSize),
+                    // Notification
+                    flex: endSize,
                     child: Row(
                       children: [
-                        Expanded(
-                          flex: applicationRunningOffset,
-                          child: Container(),
-                        ),
-                        Expanded(
-                          flex: applicationRunningSize,
-                          child: Row(
-                            children: widget.applicationRunning,
+                        if (Responsive.isLarge(context))
+                          Expanded(
+                            flex: 1,
+                            child: Container(),
                           ),
-                        ),
                         Expanded(
-                          flex: applicationRunningOffset,
-                          child: Container(),
+                          flex: 1,
+                          child: Row(
+                            children: [
+                              Expanded(
+                                flex: 2,
+                                child: InkWell(
+                                  onTap: () => {
+                                    widget.onNotificationSelected(),
+                                    // widget.removeFromDock(0),
+                                  },
+                                  child: Container(
+                                    padding: const EdgeInsets.only(
+                                      top: defaultPadding * 0.25,
+                                      bottom: defaultPadding * 0.25,
+                                      right: defaultPadding * 0.25,
+                                      left: defaultPadding * 0.25,
+                                    ),
+                                    child: SvgPicture.asset(
+                                      "assets/icons/expand_more.svg",
+                                      color: Colors.black38,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              Expanded(
+                                flex: 2,
+                                child: InkWell(
+                                  onTap: () => widget.onNotificationSelected(),
+                                  child: Container(
+                                    padding: const EdgeInsets.only(
+                                      top: defaultPadding * 0.75,
+                                      bottom: defaultPadding * 0.75,
+                                      right: defaultPadding * 0.75,
+                                      left: defaultPadding * 0.75,
+                                    ),
+                                    child: SvgPicture.asset(
+                                      "assets/icons/network_overlay.svg",
+                                      color: Colors.black38,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              Expanded(
+                                flex: 5,
+                                child: InkWell(
+                                  onTap: () {},
+                                  child: Container(
+                                    padding: const EdgeInsets.only(
+                                      top: defaultPadding * 0.25,
+                                      bottom: defaultPadding * 0.25,
+                                      right: defaultPadding * 0.25,
+                                      left: defaultPadding * 0.25,
+                                    ),
+                                    child: Column(
+                                      children: [
+                                        Expanded(
+                                          child: Container(
+                                            child: Text(
+                                              "12:00",
+                                              textAlign: TextAlign.center,
+                                            ),
+                                          ),
+                                        ),
+                                        Expanded(
+                                          child: Container(
+                                            child: Text(
+                                              "30/05/2022",
+                                              textAlign: TextAlign.center,
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              Expanded(
+                                flex: 2,
+                                child: InkWell(
+                                  onTap: () => widget.onNotificationSelected(),
+                                  child: Container(
+                                    padding: const EdgeInsets.only(
+                                      top: defaultPadding * 0.75,
+                                      bottom: defaultPadding * 0.75,
+                                      right: defaultPadding * 0.75,
+                                      left: defaultPadding * 0.25,
+                                    ),
+                                    child: SvgPicture.asset(
+                                      "assets/icons/menu_notification.svg",
+                                      color: Colors.black38,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                       ],
                     ),
                   ),
-                Expanded(
-                  // Notification
-                  flex: endSize,
-                  child: Row(
-                    children: [
-                      if (Responsive.isLarge(context))
-                        Expanded(
-                          flex: 1,
-                          child: Container(),
-                        ),
-                      Expanded(
-                        flex: 1,
-                        child: Row(
-                          children: [
-                            Expanded(
-                              flex: 2,
-                              child: InkWell(
-                                onTap: () => {
-                                  widget.onNotificationSelected(),
-                                  widget.removeFromDock(0),
-                                },
-                                child: Container(
-                                  padding: const EdgeInsets.only(
-                                    top: defaultPadding * 0.25,
-                                    bottom: defaultPadding * 0.25,
-                                    right: defaultPadding * 0.25,
-                                    left: defaultPadding * 0.25,
-                                  ),
-                                  child: SvgPicture.asset(
-                                    "assets/icons/expand_more.svg",
-                                    color: Colors.black38,
-                                  ),
-                                ),
-                              ),
-                            ),
-                            Expanded(
-                              flex: 2,
-                              child: InkWell(
-                                onTap: () => widget.onNotificationSelected(),
-                                child: Container(
-                                  padding: const EdgeInsets.only(
-                                    top: defaultPadding * 0.75,
-                                    bottom: defaultPadding * 0.75,
-                                    right: defaultPadding * 0.75,
-                                    left: defaultPadding * 0.75,
-                                  ),
-                                  child: SvgPicture.asset(
-                                    "assets/icons/network_overlay.svg",
-                                    color: Colors.black38,
-                                  ),
-                                ),
-                              ),
-                            ),
-                            Expanded(
-                              flex: 5,
-                              child: InkWell(
-                                onTap: () {},
-                                child: Container(
-                                  padding: const EdgeInsets.only(
-                                    top: defaultPadding * 0.25,
-                                    bottom: defaultPadding * 0.25,
-                                    right: defaultPadding * 0.25,
-                                    left: defaultPadding * 0.25,
-                                  ),
-                                  child: Column(
-                                    children: [
-                                      Expanded(
-                                        child: Container(
-                                          child: Text(
-                                            "12:00",
-                                            textAlign: TextAlign.center,
-                                          ),
-                                        ),
-                                      ),
-                                      Expanded(
-                                        child: Container(
-                                          child: Text(
-                                            "30/05/2022",
-                                            textAlign: TextAlign.center,
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ),
-                            Expanded(
-                              flex: 2,
-                              child: InkWell(
-                                onTap: () => widget.onNotificationSelected(),
-                                child: Container(
-                                  padding: const EdgeInsets.only(
-                                    top: defaultPadding * 0.75,
-                                    bottom: defaultPadding * 0.75,
-                                    right: defaultPadding * 0.75,
-                                    left: defaultPadding * 0.25,
-                                  ),
-                                  child: SvgPicture.asset(
-                                    "assets/icons/menu_notification.svg",
-                                    color: Colors.black38,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ),
-      ),
-    );
+      );
+    });
   }
 }

@@ -1,4 +1,6 @@
+import 'package:fluides/process_manager/process_manager.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../display_window/display_window.dart';
 
@@ -33,26 +35,39 @@ class _WorkAreaState extends State<WorkArea> {
     int startMenuSize = 3;
     int notificationSize = 3;
 
-    widget.stackProcess.add(
+    /*widget.stackProcess.add(
       DisplayWindow(
         visibleWindow: widget._visibleWindow,
         onWindowClosed: () {},
         onWindowOpened: () {},
       ),
-    );
+    );*/
 
     widget.stackProcess.add(
       DisplayNotification(
-          notificationSize: notificationSize,
-          visibleNotification: widget._visibleNotification),
+        notificationSize: notificationSize,
+        visibleNotification: widget._visibleNotification,
+      ),
     );
 
     widget.stackProcess.add(
-      DisplayStartMenu(startMenuSize: startMenuSize, visible: widget._visible),
+      DisplayStartMenu(
+        startMenuSize: startMenuSize,
+        visible: widget._visible,
+        StartApp: () => widget.stackProcess.add(
+          DisplayWindow(
+            visibleWindow: true,
+            onWindowOpened: () {},
+            onWindowClosed: () {},
+          ),
+        ),
+      ),
     );
 
-    return Stack(
-      children: widget.stackProcess,
-    );
+    return Consumer<ProcessManager>(builder: (context, apps, child) {
+      return Stack(
+        children: apps.desktop(widget.stackProcess),
+      );
+    });
   }
 }

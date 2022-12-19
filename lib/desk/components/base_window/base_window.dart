@@ -4,7 +4,11 @@ import 'package:flutter_svg/flutter_svg.dart';
 import '../../../constants.dart';
 
 class BaseWindow extends StatelessWidget {
-  const BaseWindow({Key? key}) : super(key: key);
+  BaseWindow({
+    required this.name,
+    Key? key,
+  }) : super(key: key);
+  String name;
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +52,7 @@ class BaseWindow extends StatelessWidget {
                             Expanded(
                               flex: 4,
                               child: Text(
-                                "Título da Aplicação",
+                                name,
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
                                   color: kPrimaryColor,
