@@ -10,7 +10,7 @@ import 'components/main_menu/main_menu.dart';
 
 class StartMenu extends StatefulWidget {
   StartMenu({
-    required this.StartApp,
+    //required this.StartApp,
     Key? key,
   }) : super(key: key);
 
@@ -18,7 +18,7 @@ class StartMenu extends StatefulWidget {
   static const AppList menu_app = AppList();
 
   //final Function(int) StartApp;
-  final VoidCallback StartApp;
+  //final VoidCallback StartApp;
 
   @override
   State<StatefulWidget> createState() => _StartMenuState();
@@ -59,7 +59,7 @@ class _StartMenuState extends State<StartMenu> {
                     searchSize: searchSize,
                     bottomSize: bottomSize,
                     appList: AppList(),
-                    StartApp: widget.StartApp,
+                    //StartApp: widget.StartApp,
                   ),
                 ),
               ],

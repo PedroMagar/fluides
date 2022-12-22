@@ -55,12 +55,12 @@ class DisplayStartMenu extends StatelessWidget {
     Key? key,
     required this.startMenuSize,
     required this.visible,
-    required this.StartApp,
+    //required this.StartApp,
   }) : super(key: key);
 
   final int startMenuSize;
   final bool visible;
-  final VoidCallback StartApp;
+  //final VoidCallback StartApp;
 
   @override
   Widget build(BuildContext context) {
@@ -75,8 +75,8 @@ class DisplayStartMenu extends StatelessWidget {
             duration: const Duration(milliseconds: 500),
             // The green box must be a child of the AnimatedOpacity widget.
             child: StartMenu(
-              StartApp: () {},
-            ),
+                //StartApp: () {},
+                ),
           ),
         ),
         if (startMenuSize < Responsive.tileWide(context))

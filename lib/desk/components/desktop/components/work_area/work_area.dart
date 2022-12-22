@@ -54,13 +54,13 @@ class _WorkAreaState extends State<WorkArea> {
       DisplayStartMenu(
         startMenuSize: startMenuSize,
         visible: widget._visible,
-        StartApp: () => widget.stackProcess.add(
+        /*StartApp: () => widget.stackProcess.add(
           DisplayWindow(
             visibleWindow: true,
             onWindowOpened: () {},
             onWindowClosed: () {},
           ),
-        ),
+        ),*/
       ),
     );
 
@@ -69,5 +69,9 @@ class _WorkAreaState extends State<WorkArea> {
         children: apps.desktop(widget.stackProcess),
       );
     });
+
+    /*return Consumer<ProcessManager>(builder: (context, apps, child) {
+      return apps.desktop2();
+    });*/
   }
 }

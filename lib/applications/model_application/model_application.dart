@@ -20,22 +20,8 @@ class ModelApplication extends StatelessWidget {
     var applicationProcess = ApplicationProcess(
       id: 0,
       name: name,
-      visible: true,
+      visible: false,
       icon: icon_path,
-      window: Window(
-        visibleWindow: true,
-        fullscreen: false,
-        position_x: 0,
-        position_y: 0,
-        position_z: 5,
-        offset_top: 0,
-        offset_bottom: 0,
-        offset_left: 1,
-        offset_right: 1,
-        window: BaseWindow(name: name),
-        onWindowOpened: () {},
-        onWindowClosed: () {},
-      ),
       dock: ShortcutDock(
         icon_path: icon_path,
         process_name: name,

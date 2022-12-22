@@ -11,13 +11,13 @@ class MainMenu extends StatelessWidget {
     required this.searchSize,
     required this.bottomSize,
     required this.appList,
-    required this.StartApp,
+    //required this.StartApp,
   }) : super(key: key);
 
   final int searchSize;
   final int bottomSize;
   final Widget appList;
-  final VoidCallback StartApp;
+  //final VoidCallback StartApp;
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +45,7 @@ class MainMenu extends StatelessWidget {
             children: [
               ListTile(
                 onTap: () {
-                  StartApp();
+                  //StartApp();
                 },
                 horizontalTitleGap: 0.0,
                 leading: SvgPicture.asset(

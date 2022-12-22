@@ -1,9 +1,11 @@
+import 'package:fluides/desk/components/desktop/components/display_window/display_window.dart';
 import 'package:flutter/material.dart';
 import 'package:fluides/process_manager/components/application_process/application_process.dart';
 
 class ProcessManager extends ChangeNotifier {
   List<ApplicationProcess> processList = [];
   List<ApplicationProcess> closedList = [];
+  List<Widget> desk_apps = [];
   final List<Widget> desktopList = [];
   int nextProcess = 0;
 
@@ -23,8 +25,12 @@ class ProcessManager extends ChangeNotifier {
       app.id = nextProcess;
       nextProcess = nextProcess + 1;
       processList.add(app);
+      desk_apps.add(app.window);
       print("Processo Iniciado com sucesso");
       notifyListeners();
+      // processList.last.visible = true;
+      // notifyListeners();
+      showHide(app.name);
     } else {
       stop(p_id);
     }
@@ -72,15 +78,54 @@ class ProcessManager extends ChangeNotifier {
     return new_desk;
   }
 
+  /*void desktop2() {
+    int startMenuSize = 3;
+    int notificationSize = 3;
+
+    desk_apps.add(
+      DisplayNotification(
+        notificationSize: notificationSize,
+        visibleNotification: true,
+      ),
+    );
+
+    desk_apps.add(
+      DisplayStartMenu(
+        startMenuSize: startMenuSize,
+        visible: true,
+      ),
+    );
+
+    notifyListeners();
+  }*/
+
   void showHide(String process_name) {
     for (int i = 0; i < processList.length; i++) {
       if (process_name == processList[i].name) {
         processList[i].visible = !processList[i].visible;
+
+        /*if (processList[i].visible) {
+          processList[i].hideWindowAnimation();
+        } else {
+          processList[i].showWindowAnimation();
+        }
+        notifyListeners();*/
+
+        /*setState() {
+          processList[i].window._visible = true;
+        }*/
+
         processList[i].window.setVisibility(processList[i].visible);
-        if (processList[i].visible)
+
+        //processList[i].visible = !processList[i].visible;
+
+        if (processList[i].visible) {
           print("Processo está visível");
-        else
+        } else {
           print("Processo está escondido");
+        }
+
+        notifyListeners();
       }
     }
   }
