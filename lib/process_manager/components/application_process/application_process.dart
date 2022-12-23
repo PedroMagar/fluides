@@ -3,8 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:fluides/desk/components/window/window.dart';
 import 'package:provider/provider.dart';
 
-class ApplicationProcess //{
-    extends StatefulWidget {
+class ApplicationProcess extends StatefulWidget {
   ApplicationProcess({
     //Key? key,
     required this.id,
@@ -29,39 +28,16 @@ class ApplicationProcess //{
   Widget app;
 
   void animationShowWindow() {
-    // print("Iniciando animação de exibição");
-    print("Application Manager :: Visible window setado para VERDADEIRO");
     visibleWindow = true;
   }
 
   void animationHideWindow() {
-    // print("Iniciando animação de ocultação");
-    print("Application Manager :: Visible window setado para FALSO");
     visibleWindow = false;
   }
 
   void showApplication() {
     visibleWindow = true;
   }
-
-  // void hideApplication() {
-  //   visibleWindow = false;
-  // }
-
-  // final List<int> permissions;
-
-  // final List<Widget> history;
-  // void addHistoric(Widget h) {
-  //   history.add(h);
-  //   if (history.length > 10) {
-  //     history.removeAt(0);
-  //   }
-  // }
-  // void discardFoward(int index) {
-  //   while (index >= history.length) {
-  //     history.removeAt(index);
-  //   }
-  // }
 
   @override
   State<ApplicationProcess> createState() => _ApplicationProcess();
@@ -90,28 +66,14 @@ class _ApplicationProcess extends State<ApplicationProcess> {
         offset_right: 1,
         window: selected,
         onWindowOpened: () {
-          setState(() {
-            print("Application Manager :: Animação de ABERTURA encerrada");
-            widget.visible = true;
-          });
+          widget.visible = true;
+          // setState(() {});
         },
         onWindowClosed: () {
-          setState(() {
-            print("Application Manager :: Animação de OCULTAÇÃO encerrada");
-            widget.visible = false;
-          });
+          widget.visible = false;
+          // setState(() {});
         },
       );
     });
   }
-
-  // @override
-  // Widget build(BuildContext context) {
-  //   if (widget.visible == false) {
-  //     return Container();
-  //   } else {
-  //     return widget.window;
-  //   }
-  // }
-
 }

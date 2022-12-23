@@ -45,9 +45,8 @@ class ProcessManager extends ChangeNotifier {
       }
     }
 
-    // checking if process was found
+    // closing process if already exist
     if (index >= 0) {
-      print("Process Manager :: Processo Encerrado");
       processList.removeAt(index);
     }
 
@@ -76,59 +75,16 @@ class ProcessManager extends ChangeNotifier {
     return new_desk;
   }
 
-  /*void desktop2() {
-    int startMenuSize = 3;
-    int notificationSize = 3;
-
-    desk_apps.add(
-      DisplayNotification(
-        notificationSize: notificationSize,
-        visibleNotification: true,
-      ),
-    );
-
-    desk_apps.add(
-      DisplayStartMenu(
-        startMenuSize: startMenuSize,
-        visible: true,
-      ),
-    );
-
-    notifyListeners();
-  }*/
-
   void showHide(String process_name) {
     for (int i = 0; i < processList.length; i++) {
       if (process_name == processList[i].name) {
-        // print(processList[i].visible);
-        // processList[i].visible = !processList[i].visible;
-        // notifyListeners();
-        // print(processList[i].visible);
-
         if (processList[i].visible) {
           processList[i].animationHideWindow();
-          print("Process Manager :: Animação de ocultação");
         } else {
           processList[i].visible = true;
           processList[i].animationShowWindow();
-          print("Process Manager :: Animação de exibição");
         }
         notifyListeners();
-
-        /*setState() {
-          processList[i].window._visible = true;
-        }*/
-
-        // processList[i].window.setVisibility(processList[i].visible);
-
-        //processList[i].visible = !processList[i].visible;
-
-        // if (processList[i].visible) {
-        //   print("Processo está visível");
-        // } else {
-        //   print("Processo está escondido");
-        // }
-
       }
     }
   }
