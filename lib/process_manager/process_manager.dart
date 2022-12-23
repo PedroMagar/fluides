@@ -1,4 +1,3 @@
-import 'package:fluides/desk/components/desktop/components/display_window/display_window.dart';
 import 'package:flutter/material.dart';
 import 'package:fluides/process_manager/components/application_process/application_process.dart';
 
@@ -25,12 +24,11 @@ class ProcessManager extends ChangeNotifier {
       app.id = nextProcess;
       nextProcess = nextProcess + 1;
       processList.add(app);
-      desk_apps.add(app.window);
-      print("Processo Iniciado com sucesso");
+      // desk_apps.add(app);
+      print("Process Manager :: Processo Iniciado com sucesso");
+      processList.last.visibleWindow = true;
       notifyListeners();
-      // processList.last.visible = true;
-      // notifyListeners();
-      showHide(app.name);
+      // showHide(app.name);
     } else {
       stop(p_id);
     }
@@ -49,7 +47,7 @@ class ProcessManager extends ChangeNotifier {
 
     // checking if process was found
     if (index >= 0) {
-      print("Processo Encerrado");
+      print("Process Manager :: Processo Encerrado");
       processList.removeAt(index);
     }
 
@@ -71,7 +69,7 @@ class ProcessManager extends ChangeNotifier {
     }
     for (int i = 0; i < processList.length; i++) {
       if (processList[i].visible == true) {
-        new_desk.add(processList[i].window);
+        new_desk.add(processList[i]);
       }
     }
 
@@ -102,30 +100,35 @@ class ProcessManager extends ChangeNotifier {
   void showHide(String process_name) {
     for (int i = 0; i < processList.length; i++) {
       if (process_name == processList[i].name) {
-        processList[i].visible = !processList[i].visible;
+        // print(processList[i].visible);
+        // processList[i].visible = !processList[i].visible;
+        // notifyListeners();
+        // print(processList[i].visible);
 
-        /*if (processList[i].visible) {
-          processList[i].hideWindowAnimation();
+        if (processList[i].visible) {
+          processList[i].animationHideWindow();
+          print("Process Manager :: Animação de ocultação");
         } else {
-          processList[i].showWindowAnimation();
+          processList[i].visible = true;
+          processList[i].animationShowWindow();
+          print("Process Manager :: Animação de exibição");
         }
-        notifyListeners();*/
+        notifyListeners();
 
         /*setState() {
           processList[i].window._visible = true;
         }*/
 
-        processList[i].window.setVisibility(processList[i].visible);
+        // processList[i].window.setVisibility(processList[i].visible);
 
         //processList[i].visible = !processList[i].visible;
 
-        if (processList[i].visible) {
-          print("Processo está visível");
-        } else {
-          print("Processo está escondido");
-        }
+        // if (processList[i].visible) {
+        //   print("Processo está visível");
+        // } else {
+        //   print("Processo está escondido");
+        // }
 
-        notifyListeners();
       }
     }
   }

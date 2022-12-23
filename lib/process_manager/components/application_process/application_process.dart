@@ -1,5 +1,7 @@
+import 'package:fluides/process_manager/process_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:fluides/desk/components/window/window.dart';
+import 'package:provider/provider.dart';
 
 class ApplicationProcess //{
     extends StatefulWidget {
@@ -15,44 +17,32 @@ class ApplicationProcess //{
     this.visibleWindow = false,
     // required this.permissions,
     // required this.history,
-  }) : this.window = Window(
-          visibleWindow: visibleWindow,
-          fullscreen: false,
-          position_x: 0,
-          position_y: 0,
-          position_z: 5,
-          offset_top: 0,
-          offset_bottom: 0,
-          offset_left: 1,
-          offset_right: 1,
-          window: app,
-          onWindowOpened: () {},
-          onWindowClosed: () {},
-        ); // : super(key: key);
+  }); // : super(key: key);
 
   int id;
   String name;
   String icon;
-  Window window;
   bool visible;
   bool visibleWindow;
   bool focus;
   Widget dock;
   Widget app;
 
-  void showWindowAnimation() {
-    print("Iniciando animação de exibição");
+  void animationShowWindow() {
+    // print("Iniciando animação de exibição");
+    print("Application Manager :: Visible window setado para VERDADEIRO");
     visibleWindow = true;
   }
 
-  void hideWindowAnimation() {
-    print("Iniciando animação de ocultação");
+  void animationHideWindow() {
+    // print("Iniciando animação de ocultação");
+    print("Application Manager :: Visible window setado para FALSO");
     visibleWindow = false;
   }
 
-  // void showApplication() {
-  //   visibleWindow = true;
-  // }
+  void showApplication() {
+    visibleWindow = true;
+  }
 
   // void hideApplication() {
   //   visibleWindow = false;
@@ -78,12 +68,41 @@ class ApplicationProcess //{
 }
 
 class _ApplicationProcess extends State<ApplicationProcess> {
-  bool showTrasaction = true;
-  bool showing = true;
+  Widget selected = Container();
 
   @override
   Widget build(BuildContext context) {
-    return widget.window;
+    return Consumer<ProcessManager>(builder: (context, apps, child) {
+      if (widget.visible || widget.visibleWindow)
+        selected = widget.app;
+      else
+        selected = Container();
+
+      return Window(
+        visibleWindow: widget.visibleWindow,
+        fullscreen: false,
+        position_x: 0,
+        position_y: 0,
+        position_z: 5,
+        offset_top: 0,
+        offset_bottom: 0,
+        offset_left: 1,
+        offset_right: 1,
+        window: selected,
+        onWindowOpened: () {
+          setState(() {
+            print("Application Manager :: Animação de ABERTURA encerrada");
+            widget.visible = true;
+          });
+        },
+        onWindowClosed: () {
+          setState(() {
+            print("Application Manager :: Animação de OCULTAÇÃO encerrada");
+            widget.visible = false;
+          });
+        },
+      );
+    });
   }
 
   // @override
