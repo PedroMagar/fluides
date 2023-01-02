@@ -22,7 +22,7 @@ class Desk extends StatefulWidget {
 
 class _Desk extends State<Desk> {
   bool _visible = false;
-  bool _visibleWindow = false;
+  //bool _visibleWindow = false;
   bool _visibleNotification = false;
 
   //int nextId = 1;
@@ -73,7 +73,7 @@ class _Desk extends State<Desk> {
                 flex: (Responsive.tileTall(context) * 2) - dockSize,
                 child: WorkArea(
                   visible: _visible,
-                  visibleWindow: _visibleWindow,
+                  // visibleWindow: _visibleWindow,
                   visibleNotification: _visibleNotification,
                   //stackProcess: processList,
                 ),
@@ -106,11 +106,11 @@ class _Desk extends State<Desk> {
                       _visibleNotification = !_visibleNotification;
                     });
                   },
-                  onWindowSelected: () {
-                    setState(() {
-                      _visibleWindow = !_visibleWindow;
-                    });
-                  },
+                  // onWindowSelected: () {
+                  //   setState(() {
+                  //     _visibleWindow = !_visibleWindow;
+                  //   });
+                  // },
                   //onAddToDock: (wd) => applicationRunningWidget.add(wd),
                 ),
               ),

@@ -13,7 +13,7 @@ class Dock extends StatefulWidget {
     required this.applicationRunning,
     required this.onStartSelected,
     required this.onNotificationSelected,
-    required this.onWindowSelected,
+    // required this.onWindowSelected,
     // required this.onAddToDock,
   }) : super(key: key);
 
@@ -22,7 +22,7 @@ class Dock extends StatefulWidget {
 
   final VoidCallback onStartSelected;
   final VoidCallback onNotificationSelected;
-  final VoidCallback onWindowSelected;
+  // final VoidCallback onWindowSelected;
 
   /*final Function(Widget) onAddToDock;
 

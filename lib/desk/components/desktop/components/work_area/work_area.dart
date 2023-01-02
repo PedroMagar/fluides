@@ -8,15 +8,15 @@ class WorkArea extends StatefulWidget {
   WorkArea({
     Key? key,
     required bool visible,
-    required bool visibleWindow,
+    // required bool visibleWindow,
     required bool visibleNotification,
   })  : _visible = visible,
-        _visibleWindow = visibleWindow,
+        // _visibleWindow = visibleWindow,
         _visibleNotification = visibleNotification,
         super(key: key);
 
   final bool _visible;
-  final bool _visibleWindow;
+  // final bool _visibleWindow;
   final bool _visibleNotification;
 
   final List<Widget> stackProcess = [];
