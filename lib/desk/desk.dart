@@ -25,9 +25,9 @@ class _Desk extends State<Desk> {
   bool _visibleWindow = false;
   bool _visibleNotification = false;
 
-  int nextId = 1;
+  //int nextId = 1;
 
-  Window emptyWindow = Window(
+  /*Window emptyWindow = Window(
     visibleWindow: false,
     fullscreen: false,
     position_x: 0,
@@ -40,7 +40,7 @@ class _Desk extends State<Desk> {
     window: Container(),
     onWindowOpened: () {},
     onWindowClosed: () {},
-  );
+  );*/
 
   List<Application> applicationList = [];
   List<Application> applicationRunning = [];

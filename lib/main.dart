@@ -2,9 +2,15 @@ import 'package:fluides/constants.dart';
 import 'package:fluides/desk/desk.dart';
 import 'package:fluides/process_manager/process_manager.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setEnabledSystemUIMode(
+    SystemUiMode.immersive,
+    overlays: [],
+  );
   runApp(MultiProvider(
     providers: [ChangeNotifierProvider(create: (context) => ProcessManager())],
     child: const Fluides(),

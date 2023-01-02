@@ -80,6 +80,7 @@ class DisplayStartMenu extends StatelessWidget {
           ),
         ),
         if (startMenuSize < Responsive.tileWide(context))
+          // screen white space
           Expanded(
             flex: Responsive.tileWide(context) - startMenuSize,
             child: Container(),
