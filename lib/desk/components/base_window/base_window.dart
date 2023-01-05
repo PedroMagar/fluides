@@ -21,6 +21,7 @@ class BaseWindow extends StatelessWidget {
       child: ClipRRect(
         borderRadius: borderRadiusDefault,
         child: Scaffold(
+          resizeToAvoidBottomInset: false,
           backgroundColor: Colors.white.withOpacity(0),
           body: SafeArea(
             child: Column(
@@ -32,6 +33,7 @@ class BaseWindow extends StatelessWidget {
                         //color: Colors.pink,
                         ),
                     child: Scaffold(
+                      resizeToAvoidBottomInset: false,
                       backgroundColor: Colors.white.withOpacity(0),
                       body: SafeArea(
                         child: Row(

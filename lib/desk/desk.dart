@@ -63,6 +63,7 @@ class _Desk extends State<Desk> {
   Widget build(BuildContext context) {
     int dockSize = 1;
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: Stack(
         children: <Widget>[
           Wallpaper(),

@@ -39,6 +39,7 @@ class _StartMenuState extends State<StartMenu> {
       child: ClipRRect(
         borderRadius: borderRadiusDefault,
         child: Scaffold(
+          resizeToAvoidBottomInset: false,
           backgroundColor: Colors.white.withOpacity(0),
           body: SafeArea(
             child: Row(

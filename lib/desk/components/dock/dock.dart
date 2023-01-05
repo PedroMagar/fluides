@@ -97,6 +97,7 @@ class _DockState extends State<Dock> {
         child: ClipRRect(
           borderRadius: borderRadiusDefault,
           child: Scaffold(
+            resizeToAvoidBottomInset: false,
             backgroundColor: Colors.white.withOpacity(0),
             body: SafeArea(
               child: Row(

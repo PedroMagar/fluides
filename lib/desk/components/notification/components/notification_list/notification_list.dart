@@ -10,6 +10,7 @@ class NotificationList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       backgroundColor: Colors.white.withOpacity(0.0),
       body: SafeArea(
           child: Column(
@@ -68,6 +69,7 @@ class NotificationBox extends StatelessWidget {
                     //color: Colors.pink,
                     ),
                 child: Scaffold(
+                  resizeToAvoidBottomInset: false,
                   backgroundColor: Colors.white.withOpacity(0),
                   body: SafeArea(
                     child: Row(
