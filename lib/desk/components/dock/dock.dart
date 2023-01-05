@@ -9,16 +9,16 @@ import '../../../constants.dart';
 class Dock extends StatefulWidget {
   Dock({
     Key? key,
-    required this.applicationList,
-    required this.applicationRunning,
+    // required this.applicationList,
+    // required this.applicationRunning,
     required this.onStartSelected,
     required this.onNotificationSelected,
     // required this.onWindowSelected,
     // required this.onAddToDock,
   }) : super(key: key);
 
-  List<Application> applicationList;
-  List<Widget> applicationRunning;
+  // List<Application> applicationList;
+  // List<Widget> applicationRunning;
 
   final VoidCallback onStartSelected;
   final VoidCallback onNotificationSelected;
@@ -72,8 +72,8 @@ class _DockState extends State<Dock> {
     int notifications_flex = 1;
 
     if (Responsive.isLarge(context)) {}*/
-    int applicationRunningOffset =
-        4 - (widget.applicationRunning.length / 2).floor().toInt();
+    int applicationRunningOffset = 4;
+    //    4 - (widget.applicationRunning.length / 2).floor().toInt();
 
     if (applicationRunningOffset < 0) {
       applicationRunningOffset = 0;

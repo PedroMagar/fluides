@@ -42,14 +42,14 @@ class _Desk extends State<Desk> {
     onWindowClosed: () {},
   );*/
 
-  List<Application> applicationList = [];
+  /*List<Application> applicationList = [];
   List<Application> applicationRunning = [];
-  List<Widget> applicationRunningWidget = [];
   List<Application> processRunning = [];
   List<Window> processList = [];
-  List<Widget> processHistory = [];
+  List<Widget> processHistory = [];*/
+  // List<Widget> applicationRunningWidget = [];
 
-  void addToDock(Widget wd) {
+  /*void addToDock(Widget wd) {
     applicationRunningWidget.add(wd);
   }
 
@@ -57,7 +57,7 @@ class _Desk extends State<Desk> {
     if (applicationRunningWidget.length > 0) {
       applicationRunningWidget.removeAt(0);
     }
-  }
+  }*/
 
   @override
   Widget build(BuildContext context) {
@@ -66,55 +66,60 @@ class _Desk extends State<Desk> {
       body: Stack(
         children: <Widget>[
           Wallpaper(),
-          Column(
-            children: [
-              // Desktop Work Area
-              Expanded(
-                flex: (Responsive.tileTall(context) * 2) - dockSize,
-                child: WorkArea(
-                  visible: _visible,
-                  // visibleWindow: _visibleWindow,
-                  visibleNotification: _visibleNotification,
-                  //stackProcess: processList,
+          // Desktop
+          SafeArea(
+            child: Column(
+              children: [
+                // Desktop Work Area
+                Expanded(
+                  flex: (Responsive.tileTall(context) * 2) - dockSize,
+                  child: WorkArea(
+                    visible: _visible,
+                    // visibleWindow: _visibleWindow,
+                    visibleNotification: _visibleNotification,
+                    //stackProcess: processList,
+                  ),
                 ),
-              ),
-              Expanded(
-                flex: dockSize,
-                child: Container(),
-              ),
-            ],
+                Expanded(
+                  flex: dockSize,
+                  child: Container(),
+                ),
+              ],
+            ),
           ),
           // Desktop Dock
-          Column(
-            children: [
-              Expanded(
-                flex: (Responsive.tileTall(context) * 2) - dockSize,
-                child: Container(),
-              ),
-              Expanded(
-                flex: dockSize,
-                child: Dock(
-                  applicationList: applicationList,
-                  applicationRunning: applicationRunningWidget,
-                  onStartSelected: () {
-                    setState(() {
-                      _visible = !_visible;
-                    });
-                  },
-                  onNotificationSelected: () {
-                    setState(() {
-                      _visibleNotification = !_visibleNotification;
-                    });
-                  },
-                  // onWindowSelected: () {
-                  //   setState(() {
-                  //     _visibleWindow = !_visibleWindow;
-                  //   });
-                  // },
-                  //onAddToDock: (wd) => applicationRunningWidget.add(wd),
+          SafeArea(
+            child: Column(
+              children: [
+                Expanded(
+                  flex: (Responsive.tileTall(context) * 2) - dockSize,
+                  child: Container(),
                 ),
-              ),
-            ],
+                Expanded(
+                  flex: dockSize,
+                  child: Dock(
+                    // applicationList: applicationList,
+                    // applicationRunning: applicationRunningWidget,
+                    onStartSelected: () {
+                      setState(() {
+                        _visible = !_visible;
+                      });
+                    },
+                    onNotificationSelected: () {
+                      setState(() {
+                        _visibleNotification = !_visibleNotification;
+                      });
+                    },
+                    // onWindowSelected: () {
+                    //   setState(() {
+                    //     _visibleWindow = !_visibleWindow;
+                    //   });
+                    // },
+                    //onAddToDock: (wd) => applicationRunningWidget.add(wd),
+                  ),
+                ),
+              ],
+            ),
           )
         ],
       ),
@@ -122,7 +127,7 @@ class _Desk extends State<Desk> {
   }
 }
 
-class RunningProcess extends StatefulWidget {
+/*class RunningProcess extends StatefulWidget {
   final List<ApplicationProcess> process;
   final ApplicationProcess onProcessStarted;
   final int processId;
@@ -142,4 +147,4 @@ class _RunningProcessState extends State<RunningProcess> {
   Widget build(BuildContext context) {
     return Stack();
   }
-}
+}*/

@@ -1,5 +1,3 @@
-import 'package:fluides/desk/components/window/window.dart';
-
 import '../base_window/base_window.dart';
 
 class ApplicationProcess {
