@@ -49,9 +49,10 @@ class _ApplicationProcess extends State<ApplicationProcess> {
   @override
   Widget build(BuildContext context) {
     return Consumer<ProcessManager>(builder: (context, apps, child) {
-      if (widget.visible || widget.visibleWindow)
+      if (widget.visible || widget.visibleWindow) {
         selected = widget.app;
-      else
+        //print("Application Process :: Janela visivel");
+      } else
         selected = Container();
 
       return Window(
@@ -67,11 +68,11 @@ class _ApplicationProcess extends State<ApplicationProcess> {
         window: selected,
         onWindowOpened: () {
           widget.visible = true;
-          // setState(() {});
+          setState(() {});
         },
         onWindowClosed: () {
           widget.visible = false;
-          // setState(() {});
+          setState(() {});
         },
       );
     });
