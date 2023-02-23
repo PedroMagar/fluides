@@ -28,15 +28,16 @@ class ProcessManager extends ChangeNotifier {
       print("Process Manager :: Processo Iniciado com sucesso (" +
           app.id.toString() +
           ")");
-      processList.last.visibleWindow = false;
+      //processList.last.visibleWindow = false;
+      processList.last.animationHideWindow();
       processList.last.animationShowWindow();
       notifyListeners();
       // showHide(app.name);
     } else {
       stop(p_id);
-      /*print("Process Manager :: Processo Finalizado com sucesso (" +
+      print("Process Manager :: Processo Finalizado com sucesso (" +
           p_id.toString() +
-          ")");*/
+          ")");
     }
   }
 

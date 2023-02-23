@@ -29,14 +29,12 @@ class ApplicationProcess extends StatefulWidget {
 
   void animationShowWindow() {
     visibleWindow = true;
+    print("Application Process :: " + id.toString() + " :: Janela visível ");
   }
 
   void animationHideWindow() {
     visibleWindow = false;
-  }
-
-  void showApplication() {
-    visibleWindow = true;
+    print("Application Process :: " + id.toString() + " :: Janela invisível");
   }
 
   @override
