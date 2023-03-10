@@ -83,6 +83,10 @@ class _DockState extends State<Dock> {
 
     int startSize = 3;
     int endSize = 3;
+    if (Responsive.isSmall(context) == false) {
+      startSize = 2;
+      endSize = 2;
+    }
     return Consumer<ProcessManager>(builder: (context, apps, child) {
       return Container(
         margin: const EdgeInsets.only(
