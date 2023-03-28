@@ -13,6 +13,7 @@ class ApplicationProcess extends StatefulWidget {
     required this.focus,
     required this.dock,
     required this.app,
+    //required this.shortcut,
     this.visibleWindow = false,
     // required this.permissions,
     // required this.history,
@@ -26,15 +27,16 @@ class ApplicationProcess extends StatefulWidget {
   bool focus;
   Widget dock;
   Widget app;
+  //Widget shortcut;
 
   void animationShowWindow() {
     visibleWindow = true;
-    print("Application Process :: " + id.toString() + " :: Janela visível ");
+    // print("Application Process :: " + id.toString() + " :: Janela visível ");
   }
 
   void animationHideWindow() {
     visibleWindow = false;
-    print("Application Process :: " + id.toString() + " :: Janela invisível");
+    // print("Application Process :: " + id.toString() + " :: Janela invisível");
   }
 
   @override
@@ -66,10 +68,14 @@ class _ApplicationProcess extends State<ApplicationProcess> {
         window: selected,
         onWindowOpened: () {
           widget.visible = true;
+          //widget.visibleWindow = true;
+          //print("INICIADO COM SUCESSO");
           setState(() {});
         },
         onWindowClosed: () {
           widget.visible = false;
+          //widget.visibleWindow = false;
+          //print("ENCERRADO COM SUCESSO");
           setState(() {});
         },
       );

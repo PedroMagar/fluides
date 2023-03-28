@@ -13,20 +13,21 @@ class FileManager extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String icon_path = "assets/icons/documents.svg";
+    String iconPath = "assets/icons/documents.svg";
     String name = "File Manager";
     var applicationProcess = ApplicationProcess(
       id: 0,
       name: name,
       visible: true,
-      icon: icon_path,
+      icon: iconPath,
       dock: ShortcutDock(
-        icon_path: icon_path,
-        process_name: name,
-        process_id: 0,
+        iconPath: iconPath,
+        processName: name,
+        processId: 0,
       ),
       app: BaseWindow(name: name),
       focus: true,
+      //shortcut: Container(),
     );
 
     return Consumer<ProcessManager>(builder: (context, apps, child) {
@@ -38,7 +39,7 @@ class FileManager extends StatelessWidget {
         },
         horizontalTitleGap: 0.0,
         leading: SvgPicture.asset(
-          icon_path,
+          iconPath,
           color: Colors.black,
         ),
         title: Text(name),
