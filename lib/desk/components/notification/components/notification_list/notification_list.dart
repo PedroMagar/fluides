@@ -13,30 +13,28 @@ class NotificationList extends StatelessWidget {
       resizeToAvoidBottomInset: false,
       backgroundColor: Colors.white.withOpacity(0.0),
       body: SafeArea(
+        child: SingleChildScrollView(
+          controller: ScrollController(),
           child: Column(
-        children: [
-          Expanded(
-            child: NotificationBox(
-              title: "Notificação de Teste",
-              message:
-                  "Este é apenas um texto longo usado para mostrar a versatilidade inexistente das notificações.",
-            ),
+            children: [
+              NotificationBox(
+                title: "Notificação de Teste",
+                message:
+                    "Este é apenas um texto longo usado para mostrar a versatilidade inexistente das notificações.",
+              ),
+              NotificationBox(
+                title: "Esse é um teste muito top",
+                message:
+                    "Top dos top, melhor dos melhores, não tem igual e não tem para ninguém.",
+              ),
+              NotificationBox(
+                title: "Notificação",
+                message: "Bom ter.",
+              ),
+            ],
           ),
-          Expanded(
-            child: NotificationBox(
-              title: "Esse é um teste muito top",
-              message:
-                  "Top dos top, melhor dos melhores, não tem igual e não tem para ninguém.",
-            ),
-          ),
-          Expanded(
-            child: NotificationBox(
-              title: "Notificação",
-              message: "Bom ter.",
-            ),
-          ),
-        ],
-      )),
+        ),
+      ),
     );
   }
 }
@@ -53,6 +51,7 @@ class NotificationBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      height: 150,
       margin: const EdgeInsets.all(defaultPadding),
       decoration: BoxDecoration(
         color: Colors.white60,
