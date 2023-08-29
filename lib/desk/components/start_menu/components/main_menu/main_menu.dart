@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import 'package:fluides/constants.dart';
-import 'components/search_bar/search_bar.dart';
+import 'components/menu_search_bar/menu_search_bar.dart';
 
 class MainMenu extends StatelessWidget {
   const MainMenu({
@@ -26,7 +26,7 @@ class MainMenu extends StatelessWidget {
         // Search Box
         Expanded(
           flex: searchSize,
-          child: const SearchBar(),
+          child: const MenuSearchBar(),
         ),
         // Main Menu
         Expanded(

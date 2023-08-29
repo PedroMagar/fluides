@@ -3,8 +3,8 @@ import 'package:fluides/constants.dart';
 import 'app_list_config.dart';
 import 'search_field.dart';
 
-class SearchBar extends StatelessWidget {
-  const SearchBar({
+class MenuSearchBar extends StatelessWidget {
+  const MenuSearchBar({
     Key? key,
   }) : super(key: key);
 
