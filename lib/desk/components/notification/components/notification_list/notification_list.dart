@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import '../../../../../constants.dart';
+import 'package:fluides/constants.dart';
 
 class NotificationList extends StatelessWidget {
   const NotificationList({
@@ -9,28 +9,31 @@ class NotificationList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    const notificationBox = NotificationBox(
+      title: "Notificação de Teste",
+      message:
+          "Este é apenas um texto longo usado para mostrar a versatilidade inexistente das notificações.",
+    );
+    const notificationBox2 = NotificationBox(
+      title: "Esse é um teste muito top",
+      message:
+          "Top dos top, melhor dos melhores, não tem igual e não tem para ninguém.",
+    );
+    const notificationBox3 = NotificationBox(
+      title: "Notificação",
+      message: "Bom ter.",
+    );
     return Scaffold(
       resizeToAvoidBottomInset: false,
       backgroundColor: Colors.white.withOpacity(0.0),
       body: SafeArea(
         child: SingleChildScrollView(
           controller: ScrollController(),
-          child: Column(
+          child: const Column(
             children: [
-              NotificationBox(
-                title: "Notificação de Teste",
-                message:
-                    "Este é apenas um texto longo usado para mostrar a versatilidade inexistente das notificações.",
-              ),
-              NotificationBox(
-                title: "Esse é um teste muito top",
-                message:
-                    "Top dos top, melhor dos melhores, não tem igual e não tem para ninguém.",
-              ),
-              NotificationBox(
-                title: "Notificação",
-                message: "Bom ter.",
-              ),
+              notificationBox,
+              notificationBox2,
+              notificationBox3,
             ],
           ),
         ),
@@ -64,9 +67,9 @@ class NotificationBox extends StatelessWidget {
             Expanded(
               flex: 1,
               child: Container(
-                decoration: BoxDecoration(
-                    //color: Colors.pink,
-                    ),
+                /*decoration: BoxDecoration(
+                    color: Colors.pink,
+                    ),*/
                 child: Scaffold(
                   resizeToAvoidBottomInset: false,
                   backgroundColor: Colors.white.withOpacity(0),
@@ -91,7 +94,7 @@ class NotificationBox extends StatelessWidget {
                           child: Text(
                             title,
                             textAlign: TextAlign.center,
-                            style: TextStyle(
+                            style: const TextStyle(
                               color: kPrimaryColor,
                               //fontSize: 16 * fontScale,
                             ),
@@ -116,13 +119,15 @@ class NotificationBox extends StatelessWidget {
               ),
             ),
             Expanded(
-              flex: 5,
-              child: Container(
-                decoration: BoxDecoration(
-                    //color: Colors.green,
-                    ),
-              ),
-            ),
+                flex: 5,
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(
+                    message,
+                    style: const TextStyle(color: kPrimaryColor),
+                    overflow: TextOverflow.fade,
+                  ),
+                )),
           ],
         ),
       ),

@@ -1,7 +1,7 @@
 import 'package:fluides/responsive.dart';
 import 'package:flutter/material.dart';
 
-import '../../../constants.dart';
+import 'package:fluides/constants.dart';
 
 class Window extends StatelessWidget {
   Window({
