@@ -135,7 +135,8 @@ class _WindowManagerState extends State<WindowManager> {
           if (Responsive.isLarge(context) || Responsive.isMedium(context))
             Expanded(
               flex: (Responsive.tileWide(context) / 2).floor().toInt() +
-                  widget._position_x,
+                  widget._position_x -
+                  ((widget._height / 2).ceil()),
               child: Container(),
             ),
           Expanded(
@@ -160,7 +161,8 @@ class _WindowManagerState extends State<WindowManager> {
           if (Responsive.isLarge(context))
             Expanded(
               flex: (Responsive.tileWide(context) / 2).floor().toInt() -
-                  widget._position_x,
+                  widget._position_x -
+                  ((widget._height / 2).floor()),
               child: Container(),
             ),
         ],

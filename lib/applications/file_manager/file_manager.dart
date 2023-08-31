@@ -29,7 +29,7 @@ class FileManager extends StatelessWidget {
       ),
       //app: WindowManager(window: GenericWindow(name: name)),
       window_manager: WindowManager(
-        width: 6,
+        width: 12,
         height: 4,
         position_x: 0,
         position_y: 0,
