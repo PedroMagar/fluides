@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-import 'package:fluides/responsive.dart';
+import 'package:fluides/components/responsive.dart';
 import 'package:fluides/desk/components/notification/notification.dart';
 import 'package:fluides/desk/components/start_menu/start_menu.dart';
-import 'package:fluides/desk/components/base_window/base_window.dart';
+import 'package:fluides/components/base_window/base_window.dart';
 
 /*class DisplayWindow extends StatefulWidget {
   const DisplayWindow({

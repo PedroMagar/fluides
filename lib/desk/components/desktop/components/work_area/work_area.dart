@@ -1,4 +1,4 @@
-import 'package:fluides/process_manager/process_manager.dart';
+import 'package:fluides/components/process_manager/process_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

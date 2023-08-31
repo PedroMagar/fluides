@@ -1,8 +1,8 @@
-import 'package:fluides/responsive.dart';
+import 'package:fluides/components/responsive.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-import 'package:fluides/constants.dart';
+import 'package:fluides/components/constants.dart';
 import 'components/menu_search_bar/menu_search_bar.dart';
 
 class MainMenu extends StatelessWidget {

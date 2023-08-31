@@ -1,4 +1,4 @@
-import 'package:fluides/desk/components/window/window.dart';
+import 'package:fluides/components/window/window.dart';
 
 class Application {
   bool visible;

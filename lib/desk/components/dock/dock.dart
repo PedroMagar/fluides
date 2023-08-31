@@ -1,10 +1,10 @@
-import 'package:fluides/process_manager/components/application/application.dart';
-import 'package:fluides/process_manager/process_manager.dart';
-import 'package:fluides/responsive.dart';
+import 'package:fluides/components/process_manager/components/application/application.dart';
+import 'package:fluides/components/process_manager/process_manager.dart';
+import 'package:fluides/components/responsive.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
-import 'package:fluides/constants.dart';
+import 'package:fluides/components/constants.dart';
 
 class Dock extends StatefulWidget {
   Dock({

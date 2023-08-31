@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'package:fluides/responsive.dart';
-import 'package:fluides/constants.dart';
+import 'package:fluides/components/responsive.dart';
+import 'package:fluides/components/constants.dart';
 
 import 'package:fluides/desk/components/start_menu/components/quick_menu/quick_menu.dart';
 

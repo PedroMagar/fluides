@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:fluides/constants.dart';
+import 'package:fluides/components/constants.dart';
 
 class AppListConfig extends StatelessWidget {
   const AppListConfig({

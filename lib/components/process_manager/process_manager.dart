@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:fluides/process_manager/components/application_process/application_process.dart';
+import 'package:fluides/components/process_manager/components/application_process/application_process.dart';
 
 class ProcessManager extends ChangeNotifier {
   List<ApplicationProcess> processList = [];

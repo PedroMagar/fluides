@@ -1,7 +1,7 @@
 import 'package:fluides/applications/components/shortcut_dock/shortcut_dock.dart';
-import 'package:fluides/desk/components/base_window/base_window.dart';
-import 'package:fluides/process_manager/components/application_process/application_process.dart';
-import 'package:fluides/process_manager/process_manager.dart';
+import 'package:fluides/components/base_window/base_window.dart';
+import 'package:fluides/components/process_manager/components/application_process/application_process.dart';
+import 'package:fluides/components/process_manager/process_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';

@@ -1,6 +1,6 @@
-import 'package:fluides/constants.dart';
+import 'package:fluides/components/constants.dart';
 import 'package:fluides/desk/desk.dart';
-import 'package:fluides/process_manager/process_manager.dart';
+import 'package:fluides/components/process_manager/process_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';

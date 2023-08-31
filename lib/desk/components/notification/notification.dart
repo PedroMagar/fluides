@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:fluides/constants.dart';
+import 'package:fluides/components/constants.dart';
 import 'components/notification_list/notification_list.dart';
 import 'components/notification_top_menu/notification_top_menu.dart';
 

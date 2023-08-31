@@ -1,12 +1,12 @@
-import 'package:fluides/process_manager/components/application/application.dart';
+import 'package:fluides/components/process_manager/components/application/application.dart';
 import 'package:flutter/material.dart';
 
-import 'package:fluides/responsive.dart';
+import 'package:fluides/components/responsive.dart';
 import 'components/desktop/components/work_area/work_area.dart';
 import 'components/dock/dock.dart';
 import 'components/wallpaper/wallpaper.dart';
-import 'components/window/window.dart';
-import 'components/application_process/application_process.dart';
+import 'package:fluides/components/window/window.dart';
+import 'package:fluides/components/application_process/application_process.dart';
 
 class Desk extends StatefulWidget {
   const Desk({

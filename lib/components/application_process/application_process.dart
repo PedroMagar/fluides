@@ -1,4 +1,4 @@
-import '../base_window/base_window.dart';
+import 'package:fluides/components/base_window/base_window.dart';
 
 class ApplicationProcess {
   bool visible;

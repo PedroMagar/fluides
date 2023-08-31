@@ -1,6 +1,6 @@
-import 'package:fluides/process_manager/process_manager.dart';
+import 'package:fluides/components/process_manager/process_manager.dart';
 import 'package:flutter/material.dart';
-import 'package:fluides/desk/components/window/window.dart';
+import 'package:fluides/components/window/window.dart';
 import 'package:provider/provider.dart';
 
 class ApplicationProcess extends StatefulWidget {

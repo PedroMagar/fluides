@@ -1,4 +1,4 @@
-import 'package:fluides/responsive.dart';
+import 'package:fluides/components/responsive.dart';
 import 'package:flutter/material.dart';
 
 import 'components/config_menu/config_menu.dart';
