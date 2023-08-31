@@ -2,18 +2,18 @@ import 'package:flutter/material.dart';
 
 class Responsive extends StatelessWidget {
   final Widget small;
-  final Widget? medium;
+  final Widget medium;
   final Widget large;
-  final Widget? wide;
-  final Widget? tall;
+  final Widget wide;
+  final Widget tall;
 
   const Responsive({
     Key? key,
     required this.small,
-    this.medium,
+    required this.medium,
     required this.large,
-    this.wide,
-    this.tall,
+    required this.wide,
+    required this.tall,
   }) : super(key: key);
 
   // This isMobile, isTablet, isDesktop help us later
@@ -48,7 +48,7 @@ class Responsive extends StatelessWidget {
     }
     // If width it less then 1100 and more then 850 we consider it as tablet
     else if (_size.width >= 850 && medium != null) {
-      return medium!;
+      return medium;
     }
     // Or less then that we called it mobile
     else {

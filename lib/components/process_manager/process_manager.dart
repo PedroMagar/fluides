@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:fluides/components/process_manager/components/application_process/application_process.dart';
+import './components/application_process/application_process.dart';
 
 class ProcessManager extends ChangeNotifier {
   List<ApplicationProcess> processList = [];
@@ -29,7 +29,7 @@ class ProcessManager extends ChangeNotifier {
           app.id.toString() +
           ")");
       //processList.last.visibleWindow = false;
-      processList.last.animationHideWindow();
+      //processList.last.animationHideWindow();
       processList.last.animationShowWindow();
       notifyListeners();
       // showHide(app.name);
@@ -42,7 +42,7 @@ class ProcessManager extends ChangeNotifier {
   }
 
   void stop(int id) {
-    int index = -1; // default invalid index
+    int index = -1; // default: invalid index
 
     // searching for process on the list
     for (int i = 0; i < processList.length; i++) {
@@ -74,7 +74,7 @@ class ProcessManager extends ChangeNotifier {
       new_desk.add(app);
     }
     for (int i = 0; i < processList.length; i++) {
-      if (processList[i].visible == true) {
+      if (processList[i].window_manager.getVisibility()) {
         new_desk.add(processList[i]);
       }
     }
@@ -85,10 +85,9 @@ class ProcessManager extends ChangeNotifier {
   void showHide(String process_name) {
     for (int i = 0; i < processList.length; i++) {
       if (process_name == processList[i].name) {
-        if (processList[i].visible) {
+        if (processList[i].window_manager.getVisibility()) {
           processList[i].animationHideWindow();
         } else {
-          processList[i].visible = true;
           processList[i].animationShowWindow();
         }
         notifyListeners();

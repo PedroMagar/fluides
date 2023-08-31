@@ -1,10 +1,10 @@
-import 'package:fluides/components/window_manager/components/window/window.dart';
+import 'package:fluides/components/window_manager/window_manager.dart';
 
 class Application {
   bool visible;
   String icon;
   String name;
-  Window window;
+  WindowManager window;
 
   Application({
     required this.visible,
