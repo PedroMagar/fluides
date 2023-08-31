@@ -1,3 +1,4 @@
+import 'package:fluides/components/constants.dart';
 import 'package:flutter/material.dart';
 
 class Responsive extends StatelessWidget {
@@ -18,14 +19,14 @@ class Responsive extends StatelessWidget {
 
   // This isMobile, isTablet, isDesktop help us later
   static bool isSmall(BuildContext context) =>
-      (MediaQuery.of(context).size.width / 100).floor().toInt() < 4;
+      (MediaQuery.of(context).size.width / tileSize).floor().toInt() < 4;
 
   static bool isMedium(BuildContext context) =>
-      (MediaQuery.of(context).size.width / 100).floor().toInt() < 9 &&
-      (MediaQuery.of(context).size.width / 100).floor().toInt() >= 4;
+      (MediaQuery.of(context).size.width / tileSize).floor().toInt() < 9 &&
+      (MediaQuery.of(context).size.width / tileSize).floor().toInt() >= 4;
 
   static bool isLarge(BuildContext context) =>
-      (MediaQuery.of(context).size.width / 100).floor().toInt() >= 9;
+      (MediaQuery.of(context).size.width / tileSize).floor().toInt() >= 9;
 
   static bool isWide(BuildContext context) =>
       MediaQuery.of(context).size.width > MediaQuery.of(context).size.height;
@@ -34,10 +35,10 @@ class Responsive extends StatelessWidget {
       MediaQuery.of(context).size.width <= MediaQuery.of(context).size.height;
 
   static int tileWide(BuildContext context) =>
-      (MediaQuery.of(context).size.width / 100).floor().toInt();
+      (MediaQuery.of(context).size.width / tileSize).floor().toInt();
 
   static int tileTall(BuildContext context) =>
-      (MediaQuery.of(context).size.height / 100).floor().toInt();
+      (MediaQuery.of(context).size.height / tileSize).floor().toInt();
 
   @override
   Widget build(BuildContext context) {

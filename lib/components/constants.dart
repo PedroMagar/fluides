@@ -31,3 +31,5 @@ const borderRadiusDefaultRight = BorderRadius.only(
 );
 
 const borderRadiusInput = BorderRadius.all(Radius.circular(15));
+
+const tileSize = 100;
