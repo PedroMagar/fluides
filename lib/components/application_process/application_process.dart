@@ -1,4 +1,4 @@
-import 'package:fluides/components/base_window/base_window.dart';
+import 'package:fluides/components/window_manager/components/application_window/application_window.dart';
 
 class ApplicationProcess {
   bool visible;
@@ -8,7 +8,7 @@ class ApplicationProcess {
   int position_z;
   String icon;
   String name;
-  BaseWindow window;
+  ApplicationWindow window;
 
   ApplicationProcess({
     required this.visible,

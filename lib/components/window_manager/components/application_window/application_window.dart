@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:fluides/components/constants.dart';
 
-class BaseWindow extends StatelessWidget {
-  BaseWindow({
+class ApplicationWindow extends StatelessWidget {
+  ApplicationWindow({
     required this.name,
     Key? key,
   }) : super(key: key);

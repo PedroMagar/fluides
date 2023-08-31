@@ -3,64 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:fluides/components/responsive.dart';
 import 'package:fluides/desk/components/notification/notification.dart';
 import 'package:fluides/desk/components/start_menu/start_menu.dart';
-import 'package:fluides/components/base_window/base_window.dart';
+import './components/application_window/application_window.dart';
 
-/*class DisplayWindow extends StatefulWidget {
-  const DisplayWindow({
-    Key? key,
-    required bool visibleWindow,
-    required this.onWindowOpened,
-    required this.onWindowClosed,
-  })  : _visibleWindow = visibleWindow,
-        super(key: key);
-
-  final bool _visibleWindow;
-
-  final VoidCallback onWindowOpened;
-  final VoidCallback onWindowClosed;
-
-  @override
-  State<DisplayWindow> createState() => _DisplayWindow();
-}
-
-class _DisplayWindow extends State<DisplayWindow> {
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      children: [
-        if (Responsive.isLarge(context))
-          Expanded(
-            flex: (Responsive.tileWide(context) / 4).floor().toInt(),
-            child: Container(),
-          ),
-        Expanded(
-          flex: (Responsive.tileWide(context) / 2).floor().toInt(),
-          child: AnimatedOpacity(
-            // If the widget is visible, animate to 0.0 (invisible).
-            // If the widget is hidden, animate to 1.0 (fully visible).
-            opacity: widget._visibleWindow ? 1.0 : 1.0,
-            duration: const Duration(milliseconds: 500),
-            onEnd: () => {
-              print("Fim da animação")
-              //_visibleWindow ? onWindowOpened() : onWindowClosed()
-            },
-            alwaysIncludeSemantics: true,
-            // The green box must be a child of the AnimatedOpacity widget.
-            child: BaseWindow(name: "Window"),
-          ),
-        ),
-        if (Responsive.isLarge(context))
-          Expanded(
-            flex: (Responsive.tileWide(context) / 4).floor().toInt(),
-            child: Container(),
-          ),
-      ],
-    );
-  }
-}*/
-
-class DisplayWindow extends StatelessWidget {
-  const DisplayWindow({
+class WindowManager extends StatelessWidget {
+  const WindowManager({
     Key? key,
     required bool visibleWindow,
     required this.onWindowOpened,
@@ -92,7 +38,7 @@ class DisplayWindow extends StatelessWidget {
             onEnd: () => _visibleWindow ? onWindowOpened() : onWindowClosed(),
             //alwaysIncludeSemantics: true,
             // The green box must be a child of the AnimatedOpacity widget.
-            child: BaseWindow(name: "Window"),
+            child: ApplicationWindow(name: "Window"),
           ),
         ),
         if (Responsive.isLarge(context))

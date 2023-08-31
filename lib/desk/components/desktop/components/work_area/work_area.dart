@@ -2,7 +2,7 @@ import 'package:fluides/components/process_manager/process_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../display_window/display_window.dart';
+import 'package:fluides/components/window_manager/window_manager.dart';
 
 class WorkArea extends StatefulWidget {
   WorkArea({
@@ -21,7 +21,7 @@ class WorkArea extends StatefulWidget {
 
   final List<Widget> stackProcess = [];
 
-  void addProcess(DisplayWindow newProcess) {
+  void addProcess(WindowManager newProcess) {
     stackProcess.add(newProcess);
   }
 

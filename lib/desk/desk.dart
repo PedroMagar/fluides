@@ -5,7 +5,7 @@ import 'package:fluides/components/responsive.dart';
 import 'components/desktop/components/work_area/work_area.dart';
 import 'components/dock/dock.dart';
 import 'components/wallpaper/wallpaper.dart';
-import 'package:fluides/components/window/window.dart';
+import 'package:fluides/components/window_manager/components/window/window.dart';
 import 'package:fluides/components/application_process/application_process.dart';
 
 class Desk extends StatefulWidget {

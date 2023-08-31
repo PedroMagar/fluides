@@ -1,5 +1,5 @@
 import 'package:fluides/applications/components/shortcut_dock/shortcut_dock.dart';
-import 'package:fluides/components/base_window/base_window.dart';
+import 'package:fluides/components/window_manager/components/application_window/application_window.dart';
 import 'package:fluides/components/process_manager/components/application_process/application_process.dart';
 import 'package:fluides/components/process_manager/process_manager.dart';
 import 'package:flutter/material.dart';
@@ -25,7 +25,7 @@ class FileManager extends StatelessWidget {
         processName: name,
         processId: 0,
       ),
-      app: BaseWindow(name: name),
+      app: ApplicationWindow(name: name),
       focus: true,
       //shortcut: Container(),
     );
