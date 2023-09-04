@@ -8,6 +8,8 @@ This project has a long way to go, and probably will stay like this for a long l
 - [ ] Convert Start Menu to application;
 - [ ] Convert Notification panel to application;
 - [ ] Convert Docker to application;
+- [ ] Role base access controll;
+- [ ] Json application format;
 - [ ] Translations:
     - [ ] Migrate strings to a translation file;
     - [ ] Allow to use a translation file per application.
@@ -107,8 +109,8 @@ This project has a long way to go, and probably will stay like this for a long l
     - [ ] Data structure (export to CSV);
     - [ ] Database connection.
 - [ ] Json export;
-- [ ] Json import on desktop (Application Install);
-- [ ] Json to Flutter APP.
+- [ ] Json import;
+- [ ] Json to Dart (Flutter APP).
 
 ### Lock Screen
 - [ ] Login window.
