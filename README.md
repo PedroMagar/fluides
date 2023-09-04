@@ -8,7 +8,7 @@ This project has a long way to go, and probably will stay like this for a long l
 - [ ] Convert Start Menu to application;
 - [ ] Convert Notification panel to application;
 - [ ] Convert Docker to application;
-- [ ] Role base access controll;
+- [ ] Role based access control;
 - [ ] Json application format;
 - [ ] Translations:
     - [ ] Migrate strings to a translation file;
