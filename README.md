@@ -2,13 +2,113 @@
 
 A Flutter desktop proof of concept.
 
-## Getting Started
+This project has a long way to go, and probably will stay like this for a long long time...
 
-TO-DO
+### Structure
+- [ ] Convert Start Menu to application;
+- [ ] Convert Notification panel to application;
+- [ ] Convert Docker to application;
+- [ ] Translations:
+    - [ ] Migrate strings to a translation file;
+    - [ ] Allow to use a translation file per application.
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+### Desktop
+- [ ] Wallpaper:
+    - [ ] Enable to change wallpaper;
+    - [ ] Select wallpaper behavior (stretch, fill with colour or replicate).
+- Applications Shortcuts:
+    - [ ] Create a grid for shortcuts;
+    - [ ] Enable shortcut custom placement on the grid;
+    - [ ] Create a way for shorcut to be placed;
+    - [ ] Enable shortcut customization for desktop (?).
+- [ ] Left Button / Press and hold (?) should open a new menu for some quick options:
+    - [ ] Applications (Zip, Open With, Edit, Send, Show Folder, Terminal, etc);
+    - [ ] Properties.
+- [ ] Implement multi-desktop.
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+### Window Manager
+- [ ] Window animation;
+- [ ] Improve Top bar / Menu;
+- [ ] Hide top bar on small screen or when selected by the user/application;
+- [ ] Add option to window resize;
+- [ ] Enable full screen;
+- [ ] Enable window position realocation on screen;
+- [ ] More than one window per application;
+- [ ] Custom Hotkeys.
+
+### Docker
+- [ ] Improve running application shortcut area;
+- [ ] Realocate notification to top screen on small size display.
+
+### Start Menu
+- [ ] Correct pixel overflow;
+- [ ] Create expanded screen that display all applications;
+- [ ] Makes search application works:
+    - [ ] Add option to search for file/directory.
+
+### Notification Panel
+- [ ] Improve panel;
+- [ ] Create notification modal;
+- [ ] Enable external access to notification (user consent).
+
+### File Manager
+- [ ] Directory navigation;
+- [ ] Search file/directory;
+- [ ] External access for file/directory selection.
+
+### Calendar
+- [ ] Date visualization;
+- [ ] Event scheduling;
+- [ ] Event notification;
+- [ ] External access for date selection;
+- [ ] External access to event scheduling.
+
+### Text Editor
+- [ ] Simple application for text edition (txt).
+
+### Task Manager
+- [ ] Show running process;
+- [ ] Resources utilization;
+- [ ] Kill application.
+
+### System Settings
+- [ ] Theme settings:
+    - [ ] Font;
+    - [ ] Language;
+    - [ ] Style.
+- [ ] Date & Time Settings;
+- [ ] Default Apps Settings;
+- [ ] User/Multi-user Settings;
+- [ ] Multiseat Settings;
+- [ ] Screen Settings;
+- [ ] Audio Settings;
+- [ ] Input Settings:
+    - [ ] Mouse;
+    - [ ] Keyboard;
+- [ ] Hotkey settings;
+- [ ] Power Management;
+- [ ] Environment variables;
+- [ ] System Information.
+
+### Terminal
+- [ ] Console for system commands.
+
+### Application Builder
+- [ ] Dynamic grid;
+- [ ] Text Field;
+- [ ] Input Field;
+- [ ] List;
+- [ ] Images;
+- [ ] Tools:
+    - [ ] Animations;
+    - [ ] PDF export;
+    - [ ] Send E-mail;
+    - [ ] Open file;
+    - [ ] Data structure (export to CSV);
+    - [ ] Database connection.
+- [ ] Json export;
+- [ ] Json import on desktop (Application Install);
+- [ ] Json to Flutter APP.
+
+### Lock Screen
+- [ ] Login window.
