@@ -1,12 +1,12 @@
-import 'package:fluides/applications/model_application/components/generic_window/generic_window.dart';
-import 'package:fluides/components/window_manager/window_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
-
-import 'package:fluides/applications/components/shortcut_dock/shortcut_dock.dart'; // needs isolation
-import 'package:fluides/components/process_manager/components/application_process/application_process.dart'; // needs isolation
-import 'package:fluides/components/process_manager/process_manager.dart'; // needs isolation
+import 'package:fluides/components/process_manager/process_manager.dart';
+import 'package:fluides/components/process_manager/components/application_process/application_process.dart';
+import 'package:fluides/components/window_manager/window_manager.dart';
+import 'package:fluides/components/window_manager/application_window/application_window.dart';
+import 'package:fluides/applications/components/shortcut_dock/shortcut_dock.dart';
+import 'components/generic_window/generic_window.dart';
 
 class ModelApplication extends StatelessWidget {
   const ModelApplication({
@@ -33,7 +33,7 @@ class ModelApplication extends StatelessWidget {
         height: 4,
         position_x: 0,
         position_y: 1,
-        window: GenericWindow(name: name),
+        window: ApplicationWindow(name: name, page: GenericWindow(name: name)),
         onWindowOpened: () {},
         onWindowClosed: () {},
       ),

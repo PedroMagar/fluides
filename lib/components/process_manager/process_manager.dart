@@ -25,7 +25,7 @@ class ProcessManager extends ChangeNotifier {
       nextProcess = nextProcess + 1;
       processList.add(app);
       // desk_apps.add(app);
-      print("Process Manager :: Processo Iniciado com sucesso (" +
+      print("Process Manager :: Process started successfully (" +
           app.id.toString() +
           ")");
       //processList.last.visibleWindow = false;
@@ -35,7 +35,7 @@ class ProcessManager extends ChangeNotifier {
       // showHide(app.name);
     } else {
       stop(p_id);
-      print("Process Manager :: Processo Finalizado com sucesso (" +
+      print("Process Manager :: Process stopped successfully (" +
           p_id.toString() +
           ")");
     }

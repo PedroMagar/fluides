@@ -1,8 +1,12 @@
+// ignore_for_file: non_constant_identifier_names
+
 import 'package:flutter/material.dart';
 
 import 'package:fluides/components/responsive.dart';
 import 'package:fluides/desk/components/notification/notification.dart';
 import 'package:fluides/desk/components/start_menu/start_menu.dart';
+
+import 'application_window/application_window.dart';
 
 class WindowManager extends StatefulWidget {
   WindowManager({
@@ -19,7 +23,7 @@ class WindowManager extends StatefulWidget {
     int offset_bottom = 0,
     int offset_left = 0,
     int offset_right = 0,
-    required Widget window,
+    required ApplicationWindow window,
     required this.onWindowOpened,
     required this.onWindowClosed,
   })  : _visibility = visibility,
@@ -50,7 +54,7 @@ class WindowManager extends StatefulWidget {
   int _offset_left;
   int _offset_right;
 
-  Widget _window;
+  ApplicationWindow _window;
 
   final VoidCallback onWindowOpened;
   final VoidCallback onWindowClosed;
