@@ -1,9 +1,9 @@
-import './components/window_menu/window_menu_controller.dart';
+// ignore_for_file: non_constant_identifier_names, must_be_immutable
+
+import './components/window_menu/window_menu.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:fluides/components/constants.dart';
 import 'package:fluides/components/responsive.dart';
-import 'package:provider/provider.dart';
 import 'components/window_layout/window_layout_small.dart';
 import 'components/window_layout/window_layout_medium.dart';
 import 'components/window_layout/window_layout_large.dart';
@@ -17,6 +17,7 @@ class ApplicationWindow extends StatefulWidget {
 
   final String name;
   final Widget page;
+
   bool menu_open = false;
 
   @override
@@ -75,26 +76,38 @@ class _ApplicationWindowState extends State<ApplicationWindow> {
                         flex: 9,
                         child: Stack(
                           children: [
+                            if (Responsive.isSmall(context) == false)
+                              Container(
+                                color: const Color.fromARGB(32, 0, 0, 0),
+                              ), // Background color
                             Row(
                               children: [
-                                Expanded(
+                                const Expanded(
                                   flex: 1,
-                                  child: Container(
-                                      color: Color.fromARGB(255, 36, 124, 255)),
+                                  child: WindowMenu(), // Window Menu
                                 ),
                                 if (Responsive.isMedium(context))
                                   Expanded(
                                     flex: 1,
-                                    child: Container(),
+                                    child: GestureDetector(
+                                      onTap: () {
+                                        widget.menu_open = false;
+                                        setState(() {});
+                                      },
+                                    ),
                                   ),
                                 if (Responsive.isLarge(context))
                                   Expanded(
                                     flex: 2,
-                                    child: Container(),
+                                    child: GestureDetector(
+                                      onTap: () {
+                                        widget.menu_open = false;
+                                        setState(() {});
+                                      },
+                                    ),
                                   ),
                               ],
                             ),
-                            Container(color: Color.fromARGB(32, 0, 0, 0)),
                           ],
                         ),
                       ),
