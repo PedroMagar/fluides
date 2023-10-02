@@ -22,10 +22,10 @@ class MenuSearchBar extends StatelessWidget {
               right: 1,
               left: defaultPadding * 0.75,
             ),
-            child: SearchField(),
+            child: const SearchField(),
           ),
         ),
-        Expanded(
+        const Expanded(
           flex: 1,
           child: AppListConfig(),
         ),

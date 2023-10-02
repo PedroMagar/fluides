@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class Wallpaper extends StatelessWidget {
-  Wallpaper({
+  const Wallpaper({
     Key? key,
   }) : super(key: key);
 

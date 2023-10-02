@@ -4,16 +4,16 @@ import 'package:flutter/material.dart';
 //import 'package:fluides/components/constants.dart';
 
 class GenericWindow extends StatelessWidget {
-  GenericWindow({
+  const GenericWindow({
     required this.name,
     Key? key,
   }) : super(key: key);
-  String name;
+  final String name;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Color.fromARGB(255, 37, 219, 189),
+      color: const Color.fromARGB(255, 37, 219, 189),
     );
   }
 }

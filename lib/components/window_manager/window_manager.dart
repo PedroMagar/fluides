@@ -43,18 +43,18 @@ class WindowManager extends StatefulWidget {
 
   bool _visibility;
   bool _visible;
-  bool _fullscreen;
-  int _width;
-  int _height;
+  final bool _fullscreen;
+  final int _width;
+  final int _height;
   int _position_x;
   int _position_y;
-  int _position_z;
+  final int _position_z;
   int _offset_top;
   int _offset_bottom;
   int _offset_left;
   int _offset_right;
 
-  ApplicationWindow _window;
+  final ApplicationWindow _window;
 
   final VoidCallback onWindowOpened;
   final VoidCallback onWindowClosed;
@@ -199,7 +199,7 @@ class DisplayStartMenu extends StatelessWidget {
             opacity: visible ? 1.0 : 0.0,
             duration: const Duration(milliseconds: 500),
             // The green box must be a child of the AnimatedOpacity widget.
-            child: StartMenu(
+            child: const StartMenu(
                 //StartApp: () {},
                 ),
           ),
@@ -243,7 +243,7 @@ class DisplayNotification extends StatelessWidget {
             opacity: _visibleNotification ? 1.0 : 0.0,
             duration: const Duration(milliseconds: 500),
             // The green box must be a child of the AnimatedOpacity widget.
-            child: NotificationMenu(),
+            child: const NotificationMenu(),
           ),
         ),
       ],

@@ -1,9 +1,9 @@
-import 'package:fluides/components/constants.dart';
-import 'package:fluides/desk/desk.dart';
-import 'package:fluides/components/process_manager/process_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
+import 'package:fluides/components/constants.dart';
+import 'package:fluides/components/process_manager/process_manager.dart';
+import 'package:fluides/desk/desk.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -32,7 +32,7 @@ class Fluides extends StatelessWidget {
         textTheme: Theme.of(context).textTheme.apply(bodyColor: kTextColor),
         primarySwatch: Colors.blue,
       ),
-      home: Desk(),
+      home: const Desk(),
     );
   }
 }

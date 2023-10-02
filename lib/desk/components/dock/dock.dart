@@ -1,4 +1,3 @@
-import 'package:fluides/components/process_manager/components/application/application.dart';
 import 'package:fluides/components/process_manager/process_manager.dart';
 import 'package:fluides/components/responsive.dart';
 import 'package:flutter/material.dart';
@@ -7,7 +6,7 @@ import 'package:provider/provider.dart';
 import 'package:fluides/components/constants.dart';
 
 class Dock extends StatefulWidget {
-  Dock({
+  const Dock({
     Key? key,
     // required this.applicationList,
     // required this.applicationRunning,
@@ -94,7 +93,7 @@ class _DockState extends State<Dock> {
           right: dockPadding,
           bottom: dockPadding,
         ),
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           color: kLightColor,
           borderRadius: borderRadiusDefault,
         ),
@@ -253,7 +252,7 @@ class _DockState extends State<Dock> {
                                       children: [
                                         Expanded(
                                           child: Container(
-                                            child: Text(
+                                            child: const Text(
                                               "12:00",
                                               textAlign: TextAlign.center,
                                             ),
@@ -261,7 +260,7 @@ class _DockState extends State<Dock> {
                                         ),
                                         Expanded(
                                           child: Container(
-                                            child: Text(
+                                            child: const Text(
                                               "30/05/2022",
                                               textAlign: TextAlign.center,
                                             ),

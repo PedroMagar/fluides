@@ -1,3 +1,5 @@
+// ignore_for_file: non_constant_identifier_names
+
 import 'package:fluides/components/responsive.dart';
 import 'package:flutter/material.dart';
 
@@ -11,23 +13,23 @@ class QuickMenu extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    int configSize = 1;
+    int config_size = 1;
     return Container(
       color: Colors.black12,
       child: Column(
         children: [
           // Shortcut
           Expanded(
-            flex: Responsive.tileTall(context) - configSize,
+            flex: Responsive.tileTall(context) - config_size,
             child: SingleChildScrollView(
               controller: ScrollController(),
-              child: ShortcutMenu(),
+              child: const ShortcutMenu(),
             ),
           ),
           // Config
           Expanded(
-            flex: configSize,
-            child: Column(
+            flex: config_size,
+            child: const Column(
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.end,
               children: [

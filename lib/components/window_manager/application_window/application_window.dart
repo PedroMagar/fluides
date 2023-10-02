@@ -29,7 +29,7 @@ class _ApplicationWindowState extends State<ApplicationWindow> {
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.all(defaultPadding),
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         color: Colors.white,
         borderRadius: borderRadiusDefault,
       ),

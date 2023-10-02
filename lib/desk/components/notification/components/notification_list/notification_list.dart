@@ -1,3 +1,5 @@
+// ignore_for_file: constant_identifier_names
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:fluides/components/constants.dart';
@@ -9,17 +11,17 @@ class NotificationList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const notificationBox = NotificationBox(
+    const notification_box = NotificationBox(
       title: "Notificação de Teste",
       message:
           "Este é apenas um texto longo usado para mostrar a versatilidade inexistente das notificações.",
     );
-    const notificationBox2 = NotificationBox(
+    const notification_box2 = NotificationBox(
       title: "Esse é um teste muito top",
       message:
           "Top dos top, melhor dos melhores, não tem igual e não tem para ninguém.",
     );
-    const notificationBox3 = NotificationBox(
+    const notification_box3 = NotificationBox(
       title: "Notificação",
       message: "Bom ter.",
     );
@@ -31,9 +33,9 @@ class NotificationList extends StatelessWidget {
           controller: ScrollController(),
           child: const Column(
             children: [
-              notificationBox,
-              notificationBox2,
-              notificationBox3,
+              notification_box,
+              notification_box2,
+              notification_box3,
             ],
           ),
         ),
@@ -56,7 +58,7 @@ class NotificationBox extends StatelessWidget {
     return Container(
       height: 150,
       margin: const EdgeInsets.all(defaultPadding),
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         color: Colors.white60,
         borderRadius: borderRadiusInput,
       ),

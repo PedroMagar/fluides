@@ -12,11 +12,11 @@ class NotificationMenu extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.all(defaultPadding),
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         color: kLightColor,
         borderRadius: borderRadiusDefault,
       ),
-      child: ClipRRect(
+      child: const ClipRRect(
         borderRadius: borderRadiusDefault,
         child: Column(
           children: [

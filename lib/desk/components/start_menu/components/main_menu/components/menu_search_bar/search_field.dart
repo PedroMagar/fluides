@@ -15,12 +15,12 @@ class SearchField extends StatelessWidget {
         hintText: "Pesquisar",
         fillColor: Colors.black12,
         filled: true,
-        border: OutlineInputBorder(
+        border: const OutlineInputBorder(
           borderSide: BorderSide.none,
           borderRadius: borderRadiusInput,
         ),
         prefixIcon: Container(
-          padding: EdgeInsets.all(defaultPadding * 0.75),
+          padding: const EdgeInsets.all(defaultPadding * 0.75),
           child: SvgPicture.asset(
             "assets/icons/Search.svg",
             color: Colors.black38,

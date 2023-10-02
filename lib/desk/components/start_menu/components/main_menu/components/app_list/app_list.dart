@@ -1,6 +1,5 @@
 import 'package:fluides/applications/file_manager/file_manager.dart';
 import 'package:fluides/applications/model_application/model_application.dart';
-import 'package:fluides/components/process_manager/components/application_process/application_process.dart';
 import 'package:fluides/components/process_manager/process_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -17,8 +16,8 @@ class AppList extends StatelessWidget {
       return Column(
         //crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          ModelApplication(),
-          FileManager(),
+          const ModelApplication(),
+          const FileManager(),
           ListTile(
             // Atualizar
             onTap: () {},
@@ -27,7 +26,7 @@ class AppList extends StatelessWidget {
               "assets/icons/menu_dashbord.svg",
               color: Colors.black,
             ),
-            title: Text("Atualizar"),
+            title: const Text("Atualizar"),
           ),
           ListTile(
             // Video
@@ -37,7 +36,7 @@ class AppList extends StatelessWidget {
               "assets/icons/menu_dashbord.svg",
               color: Colors.black,
             ),
-            title: Text("Video"),
+            title: const Text("Video"),
           ),
           ListTile(
             // Terminal
@@ -47,7 +46,7 @@ class AppList extends StatelessWidget {
               "assets/icons/menu_dashbord.svg",
               color: Colors.black,
             ),
-            title: Text("Terminal"),
+            title: const Text("Terminal"),
           ),
           ListTile(
             // Gerenciador de Dispositivos
@@ -57,7 +56,7 @@ class AppList extends StatelessWidget {
               "assets/icons/menu_dashbord.svg",
               color: Colors.black,
             ),
-            title: Text("Gerenciador de Dispositivos"),
+            title: const Text("Gerenciador de Dispositivos"),
           ),
           ListTile(
             // Gerenciador de Arquivos
@@ -67,7 +66,7 @@ class AppList extends StatelessWidget {
               "assets/icons/menu_dashbord.svg",
               color: Colors.black,
             ),
-            title: Text("Gerenciador de Arquivos"),
+            title: const Text("Gerenciador de Arquivos"),
           ),
           ListTile(
             // Gravador de Tela
@@ -77,7 +76,7 @@ class AppList extends StatelessWidget {
               "assets/icons/menu_dashbord.svg",
               color: Colors.black,
             ),
-            title: Text("Gravador de Tela"),
+            title: const Text("Gravador de Tela"),
           ),
           ListTile(
             // Imagem
@@ -87,7 +86,7 @@ class AppList extends StatelessWidget {
               "assets/icons/menu_dashbord.svg",
               color: Colors.black,
             ),
-            title: Text("Imagem"),
+            title: const Text("Imagem"),
           ),
           ListTile(
             // Álbum
@@ -97,7 +96,7 @@ class AppList extends StatelessWidget {
               "assets/icons/menu_dashbord.svg",
               color: Colors.black,
             ),
-            title: Text("Álbum"),
+            title: const Text("Álbum"),
           ),
           ListTile(
             // Visualizador de Documentos
@@ -107,7 +106,7 @@ class AppList extends StatelessWidget {
               "assets/icons/menu_dashbord.svg",
               color: Colors.black,
             ),
-            title: Text("Visualizador de Documentos"),
+            title: const Text("Visualizador de Documentos"),
           ),
           ListTile(
             // Editor de Texto
@@ -117,7 +116,7 @@ class AppList extends StatelessWidget {
               "assets/icons/menu_dashbord.svg",
               color: Colors.black,
             ),
-            title: Text("Editor de Texto"),
+            title: const Text("Editor de Texto"),
           ),
           ListTile(
             // Escaner
@@ -127,7 +126,7 @@ class AppList extends StatelessWidget {
               "assets/icons/menu_dashbord.svg",
               color: Colors.black,
             ),
-            title: Text("Escaner"),
+            title: const Text("Escaner"),
           ),
           ListTile(
             // Computador
@@ -137,7 +136,7 @@ class AppList extends StatelessWidget {
               "assets/icons/menu_dashbord.svg",
               color: Colors.black,
             ),
-            title: Text("Computador"),
+            title: const Text("Computador"),
           ),
         ],
       );

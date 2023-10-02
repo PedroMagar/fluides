@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'package:fluides/components/responsive.dart';
 import 'package:fluides/components/constants.dart';
 
 import 'package:fluides/desk/components/start_menu/components/quick_menu/quick_menu.dart';
@@ -9,7 +8,7 @@ import 'components/main_menu/components/app_list/app_list.dart';
 import 'components/main_menu/main_menu.dart';
 
 class StartMenu extends StatefulWidget {
-  StartMenu({
+  const StartMenu({
     //required this.StartApp,
     Key? key,
   }) : super(key: key);
@@ -32,7 +31,7 @@ class _StartMenuState extends State<StartMenu> {
     return Container(
       margin: const EdgeInsets.all(defaultPadding),
       //padding: const EdgeInsets.all(defaultPadding),
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         color: kLightColor,
         borderRadius: borderRadiusDefault,
       ),
@@ -48,7 +47,7 @@ class _StartMenuState extends State<StartMenu> {
               children: [
                 // Left Menu
 
-                Expanded(
+                const Expanded(
                   flex: 2,
                   child: QuickMenu(),
                 ),
@@ -59,7 +58,7 @@ class _StartMenuState extends State<StartMenu> {
                   child: MainMenu(
                     searchSize: searchSize,
                     bottomSize: bottomSize,
-                    appList: AppList(),
+                    appList: const AppList(),
                     //StartApp: widget.StartApp,
                   ),
                 ),

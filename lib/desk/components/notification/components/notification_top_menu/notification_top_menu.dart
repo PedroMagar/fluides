@@ -19,7 +19,7 @@ class NotificationTopMenu extends StatelessWidget {
               flex: 1,
               child: Container(
                 //margin: const EdgeInsets.all(10),
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   borderRadius: BorderRadius.only(
                     topLeft: themeDefaultRadiusMain,
                   ),
@@ -38,7 +38,7 @@ class NotificationTopMenu extends StatelessWidget {
                 ),
               ),
             ),
-            Expanded(
+            const Expanded(
               flex: 3,
               child: Text(
                 "Central de Notificações",
@@ -52,7 +52,7 @@ class NotificationTopMenu extends StatelessWidget {
             Expanded(
               flex: 1,
               child: Container(
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   //color: Colors.pink,
                   borderRadius: BorderRadius.only(
                     topRight: themeDefaultRadiusMain,

@@ -1,36 +1,38 @@
+// ignore_for_file: non_constant_identifier_names
+
 import 'package:flutter/material.dart';
 import './components/application_process/application_process.dart';
 
 class ProcessManager extends ChangeNotifier {
-  List<ApplicationProcess> processList = [];
-  List<ApplicationProcess> closedList = [];
-  List<Widget> desk_apps = [];
-  final List<Widget> desktopList = [];
-  int nextProcess = 0;
+  List<ApplicationProcess> process_list = [];
+  List<ApplicationProcess> closed_list = [];
+  //List<Widget> desk_apps = [];
+  //final List<Widget> desktopList = [];
+  int next_process = 0;
 
-  int get totalProcess => processList.length;
+  int get totalProcess => process_list.length;
 
   void start(ApplicationProcess app) {
     bool closed = true;
     int p_id = 0;
-    for (int i = 0; i < processList.length; i++) {
-      if (app.name == processList[i].name) {
+    for (int i = 0; i < process_list.length; i++) {
+      if (app.name == process_list[i].name) {
         closed = false;
-        p_id = processList[i].id;
+        p_id = process_list[i].id;
       }
     }
 
     if (closed) {
-      app.id = nextProcess;
-      nextProcess = nextProcess + 1;
-      processList.add(app);
+      app.id = next_process;
+      next_process = next_process + 1;
+      process_list.add(app);
       // desk_apps.add(app);
       print("Process Manager :: Process started successfully (" +
           app.id.toString() +
           ")");
       //processList.last.visibleWindow = false;
       //processList.last.animationHideWindow();
-      processList.last.animationShowWindow();
+      process_list.last.animationShowWindow();
       notifyListeners();
       // showHide(app.name);
     } else {
@@ -45,8 +47,8 @@ class ProcessManager extends ChangeNotifier {
     int index = -1; // default: invalid index
 
     // searching for process on the list
-    for (int i = 0; i < processList.length; i++) {
-      if (processList[i].id == id) {
+    for (int i = 0; i < process_list.length; i++) {
+      if (process_list[i].id == id) {
         index = i; // process located on the list
         break;
       }
@@ -54,7 +56,7 @@ class ProcessManager extends ChangeNotifier {
 
     // closing process if already exist
     if (index >= 0) {
-      processList.removeAt(index);
+      process_list.removeAt(index);
     }
 
     notifyListeners();
@@ -62,8 +64,8 @@ class ProcessManager extends ChangeNotifier {
 
   List<Widget> runningOnDock() {
     List<Widget> running = [];
-    for (int i = 0; i < processList.length; i++) {
-      running.add(processList[i].dock);
+    for (int i = 0; i < process_list.length; i++) {
+      running.add(process_list[i].dock);
     }
     return running;
   }
@@ -73,9 +75,9 @@ class ProcessManager extends ChangeNotifier {
     for (var app in desk) {
       new_desk.add(app);
     }
-    for (int i = 0; i < processList.length; i++) {
-      if (processList[i].window_manager.getVisibility()) {
-        new_desk.add(processList[i]);
+    for (int i = 0; i < process_list.length; i++) {
+      if (process_list[i].window_manager.getVisibility()) {
+        new_desk.add(process_list[i]);
       }
     }
 
@@ -83,12 +85,12 @@ class ProcessManager extends ChangeNotifier {
   }
 
   void showHide(String process_name) {
-    for (int i = 0; i < processList.length; i++) {
-      if (process_name == processList[i].name) {
-        if (processList[i].window_manager.getVisibility()) {
-          processList[i].animationHideWindow();
+    for (int i = 0; i < process_list.length; i++) {
+      if (process_name == process_list[i].name) {
+        if (process_list[i].window_manager.getVisibility()) {
+          process_list[i].animationHideWindow();
         } else {
-          processList[i].animationShowWindow();
+          process_list[i].animationShowWindow();
         }
         notifyListeners();
       }

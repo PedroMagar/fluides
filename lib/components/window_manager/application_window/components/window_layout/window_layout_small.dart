@@ -27,7 +27,7 @@ class WindowLayoutSmall extends StatelessWidget {
             Expanded(
               flex: 2,
               child: Container(
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                     //color: Colors.pink,
                     ),
                 child: Scaffold(
@@ -39,14 +39,12 @@ class WindowLayoutSmall extends StatelessWidget {
                       children: [
                         Expanded(
                           flex: 1,
-                          child: Container(
-                            child: InkWell(
-                              onTap: onMenuPressed,
-                              child: SvgPicture.asset(
-                                "assets/icons/menu_setting.svg",
-                                color: kPrimaryColor,
-                                //fit: BoxFit.fitWidth,
-                              ),
+                          child: InkWell(
+                            onTap: onMenuPressed,
+                            child: SvgPicture.asset(
+                              "assets/icons/menu_setting.svg",
+                              color: kPrimaryColor,
+                              //fit: BoxFit.fitWidth,
                             ),
                           ),
                         ),
@@ -55,7 +53,7 @@ class WindowLayoutSmall extends StatelessWidget {
                           child: Text(
                             name,
                             textAlign: TextAlign.center,
-                            style: TextStyle(
+                            style: const TextStyle(
                               color: kPrimaryColor,
                               fontSize: 16 * fontScale,
                             ),

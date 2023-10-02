@@ -1,10 +1,12 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:fluides/components/process_manager/process_manager.dart';
 import 'package:fluides/components/window_manager/window_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class ApplicationProcess extends StatefulWidget {
-  ApplicationProcess({
+  ApplicationProcess({super.key, 
     //Key? key,
     required this.id,
     required this.name,
@@ -47,8 +49,10 @@ class _ApplicationProcess extends State<ApplicationProcess> {
   Widget selected = Container();
   @override
   Widget build(BuildContext context) {
-    return Consumer<ProcessManager>(builder: (context, apps, child) {
-      return widget.window_manager;
-    });
+    return Consumer<ProcessManager>(
+      builder: (context, apps, child) {
+        return widget.window_manager;
+      },
+    );
   }
 }

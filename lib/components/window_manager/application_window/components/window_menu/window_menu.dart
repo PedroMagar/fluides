@@ -66,7 +66,7 @@ class DrawerListTile extends StatelessWidget {
       ),
       title: Text(
         title,
-        style: TextStyle(color: Color.fromARGB(255, 66, 66, 66)),
+        style: const TextStyle(color: Color.fromARGB(255, 66, 66, 66)),
       ),
     );
   }

@@ -48,7 +48,7 @@ class Responsive extends StatelessWidget {
       return large;
     }
     // If width it less then 1100 and more then 850 we consider it as tablet
-    else if (_size.width >= 850 && medium != null) {
+    else if (_size.width >= 850 && _size.width < 1100) {
       return medium;
     }
     // Or less then that we called it mobile
