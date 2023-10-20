@@ -29,9 +29,10 @@ This project has a long way to go, and probably will stay like this for a long l
 - [ ] Implement multi-desktop.
 
 ### Window Manager
-- [ ] Window animation;
-- [ ] Improve Top bar / Menu;
-- [ ] Hide top bar on small screen or when selected by the user/application;
+- [ ] Window animation; (started)
+- [ ] Improve Top bar / Menu; (started)
+- [x] Make selected window always on top (ApplicationProcess); (2023-10-20)
+- [ ] Hide top bar on small screen or when selected by the user/application; (started)
 - [ ] Add option to window resize;
 - [ ] Enable full screen;
 - [ ] Enable window position realocation on screen;
