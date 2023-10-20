@@ -4,6 +4,14 @@ A Flutter desktop proof of concept.
 
 This project has a long way to go, and probably will stay like this for a long long time...
 
+## Objective
+
+I like the idea of an unified interface, something that would look good on a smartphone or a desktop, but I know my limitations and that I could not get even a little closer to something like KDE or Gnome, so I would be happy if I could just make a fake desktop to run in something like a sbc (Raspberry Pi or the others 'Fruit Pi').
+
+Even so it's not a complete throw away project, if it works correctly I pretend to use it as the base application in where I do work, it would offer a visual identity for the application with an easy to customise interface (see: [Application Builder](#application-builder)).
+
+# TO-DO
+
 ### Structure
 - [ ] Convert Start Menu to application;
 - [ ] Convert Notification panel to application;
