@@ -19,7 +19,7 @@ class WindowLayoutMedium extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        Expanded(
+        Container(
           child: page,
         ),
         Column(

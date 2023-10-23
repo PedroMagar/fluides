@@ -27,6 +27,9 @@ class ApplicationWindow extends StatefulWidget {
 class _ApplicationWindowState extends State<ApplicationWindow> {
   @override
   Widget build(BuildContext context) {
+    final bool screen_size_small = Responsive.isSmall(context);
+    final bool screen_size_medium = Responsive.isMedium(context);
+    final bool screen_size_large = Responsive.isLarge(context);
     return Container(
       margin: const EdgeInsets.all(defaultPadding),
       decoration: const BoxDecoration(
@@ -41,7 +44,7 @@ class _ApplicationWindowState extends State<ApplicationWindow> {
           body: SafeArea(
             child: Stack(
               children: [
-                if (Responsive.isSmall(context))
+                if (screen_size_small)
                   WindowLayoutSmall(
                       page: widget.page,
                       name: widget.name,
@@ -49,7 +52,7 @@ class _ApplicationWindowState extends State<ApplicationWindow> {
                         widget.menu_open = !widget.menu_open;
                         setState(() {});
                       }),
-                if (Responsive.isMedium(context))
+                if (screen_size_medium)
                   WindowLayoutMedium(
                       page: widget.page,
                       name: widget.name,
@@ -57,7 +60,7 @@ class _ApplicationWindowState extends State<ApplicationWindow> {
                         widget.menu_open = !widget.menu_open;
                         setState(() {});
                       }),
-                if (Responsive.isLarge(context))
+                if (screen_size_large)
                   WindowLayoutLarge(
                       page: widget.page,
                       name: widget.name,
@@ -76,7 +79,7 @@ class _ApplicationWindowState extends State<ApplicationWindow> {
                         flex: 9,
                         child: Stack(
                           children: [
-                            if (Responsive.isSmall(context) == false)
+                            if (screen_size_small == false)
                               Container(
                                 color: const Color.fromARGB(32, 0, 0, 0),
                               ), // Background color
@@ -86,7 +89,7 @@ class _ApplicationWindowState extends State<ApplicationWindow> {
                                   flex: 1,
                                   child: WindowMenu(), // Window Menu
                                 ),
-                                if (Responsive.isMedium(context))
+                                if (screen_size_medium)
                                   Expanded(
                                     flex: 1,
                                     child: GestureDetector(
@@ -96,7 +99,7 @@ class _ApplicationWindowState extends State<ApplicationWindow> {
                                       },
                                     ),
                                   ),
-                                if (Responsive.isLarge(context))
+                                if (screen_size_large)
                                   Expanded(
                                     flex: 2,
                                     child: GestureDetector(
